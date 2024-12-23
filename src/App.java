@@ -34,7 +34,7 @@ public class App extends Application {
         primaryStage.show();
     }
  
-    //run
+    //run the application
  public static void main(String[] args) {
         launch(args);
     }
