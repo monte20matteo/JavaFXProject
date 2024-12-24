@@ -24,13 +24,6 @@
         },
         {
             "type": "java",
-            "name": "Prova",
-            "request": "launch",
-            "mainClass": "Prova",
-            "projectName": "JavaFXProject_471d6376"
-        },
-        {
-            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
