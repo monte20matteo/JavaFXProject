@@ -9,6 +9,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Prova",
+            "request": "launch",
+            "mainClass": "Prova",
+            "projectName": "JavaFXProject_1562b6b0"
+        },
+        {
+            "type": "java",
             "name": "App",
             "request": "launch",
             "mainClass": "App",
