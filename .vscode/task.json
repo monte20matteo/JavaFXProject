@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "/usr/bin/env",
+            "args": [
+                "/Library/Java/JavaVirtualMachines/jdk-23.jdk/Contents/Home/bin/javac",
+                "--module-path",
+                "/Users/lucadicapua/javafx-sdk-23.0.1/lib",
+                "--add-modules",
+                "javafx.controls,javafx.fxml",
+                "-d",
+                "bin",
+                "src/App.java"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$javac"]
+        }
+    ]
+}

@@ -2,7 +2,7 @@
     // Use IntelliSense to learn about possible attributes.
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
+    /*"version": "0.2.0",
     "configurations": [
         {
             "type": "java",
@@ -25,6 +25,23 @@
             "projectName": "JavaFXProject_471d6376",
             //Path monte windows
             "vmArgs": "--module-path \"C:/Java/javafx-sdk-23.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+        }
+    ]*/
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "JavaFXProject_b315e43f",
+            "vmArgs": "--module-path /Users/lucadicapua/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
