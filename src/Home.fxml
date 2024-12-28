@@ -6,34 +6,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@style.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
    <children>
-      <Label id="loginTitle" layoutX="333.0" layoutY="70.0" prefHeight="36.0" prefWidth="67.0" text="Login">
+      <Label id="loginTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="22.0" prefHeight="36.0" prefWidth="87.0" text="Home">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="118.0" layoutY="173.0" text="Username">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="124.0" text="Username">
          <font>
-            <Font size="20.0" />
+            <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="121.0" layoutY="231.0" text="Password">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="204.0" layoutY="197.0" text="Password">
          <font>
-            <Font size="20.0" />
+            <Font size="16.0" />
          </font>
       </Label>
-      <TextField id="textFieldUsername" fx:id="tfUsername" layoutX="216.0" layoutY="175.0" prefHeight="26.0" prefWidth="286.0" promptText="Inserisci username..."  />
-      <TextField id="textFieldPassword" fx:id="tfPassword" layoutX="216.0" layoutY="233.0" prefHeight="26.0" prefWidth="285.0" promptText="Inserisci password..." />
-      <Button id="loginButton" layoutX="216.0" layoutY="279.0" mnemonicParsing="false" onAction="#accediClicked" text="Accedi">
+      <TextField id="textFieldUsername" fx:id="tfUsername" layoutX="204.0" layoutY="150.0" prefHeight="26.0" prefWidth="286.0" promptText="Inserisci username..." />
+      <TextField id="textFieldPassword" fx:id="tfPassword" layoutX="204.0" layoutY="223.0" prefHeight="26.0" prefWidth="285.0" promptText="Inserisci password..." />
+      <Button id="loginButton" alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="281.0" mnemonicParsing="false" onAction="#accediClicked" text="Accedi">
          <font>
-            <Font size="20.0" />
+            <Font size="16.0" />
          </font>
       </Button>
-      <Button id="loginButton" layoutX="310.0" layoutY="279.0" mnemonicParsing="false" onAction="#creaNuovoUtenteClicked" text="Crea nuovo utente">
+      <Button id="registrazioneButton" alignment="CENTER" contentDisplay="CENTER" layoutX="325.0" layoutY="281.0" mnemonicParsing="false" onAction="#creaNuovoUtenteClicked" text="Crea nuovo utente">
          <font>
-            <Font size="20.0" />
+            <Font size="16.0" />
          </font>
       </Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="68.0" prefHeight="26.0" prefWidth="258.0" text="Monteventi - Di Capua - Magliarella">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
