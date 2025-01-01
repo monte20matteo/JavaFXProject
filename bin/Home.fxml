@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
@@ -10,93 +9,30 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
+
+<StackPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
    <children>
-      <!-- VBox principale con allineamento al centro -->
-      <VBox spacing="25" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
-         <!-- Header con sfondo grigio -->
-         <HBox alignment="CENTER" style="-fx-background-color: #a5a5a5; -fx-padding: 10 20;">
-            <children>
-               <Label id="loginTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Home">
-                  <font>
-                     <Font size="30.0" />  <!-- Aumentato il font -->
-                  </font>
-               </Label>
-            </children>
-         </HBox>
-
-         <!-- Spazio per distanziare gli elementi -->
-         <Region VBox.vgrow="ALWAYS" />
-
-         <!-- Main Content: i campi di input -->
-         <VBox spacing="20" alignment="CENTER"> <!-- Maggiore spacing tra i campi di input -->
-            <children>
-               <!-- Titolo sopra al primo campo -->
-               <Label id="loginTitle2" text="Benvenuto" alignment="CENTER">
-                  <font>
-                     <Font size="24.0" />
-                  </font>
-               </Label>
-               
-               <!-- Username Row -->
-               <HBox alignment="CENTER">
-                  <Label text="Username" minWidth="150">
+      <VBox alignment="CENTER" spacing="20.0">
+         <children>
+            <!-- Etichetta centrata sopra i pulsanti -->
+            <Label fx:id="target" text="Monteventi - Di Capua - Magliarella" />
+            
+            <!-- HBox per disporre i pulsanti uno accanto all'altro -->
+            <HBox alignment="CENTER" spacing="30.0"> <!-- Maggiore spazio tra i pulsanti -->
+               <children>
+                  <Button id="loginButton" alignment="CENTER" contentDisplay="CENTER" onAction="#loginClicked" text="Pagina di login" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
                      <font>
-                        <Font size="18.0" /> <!-- Aumentato il font -->
+                        <Font size="18.0" />
                      </font>
-                  </Label>
-                  <TextField id="textFieldUsername" fx:id="tfUsername" promptText="Inserisci username..." prefWidth="350.0" maxWidth="350.0" style="-fx-font-size: 18px; -fx-padding: 5 10;"/> <!-- Ridotto padding -->
-               </HBox>
-               
-               <!-- Spazio tra Username e Password -->
-               <Region VBox.vgrow="ALWAYS" /> <!-- Aggiungi spazio tra i campi -->
-
-               <!-- Password Row -->
-               <HBox alignment="CENTER">
-                  <Label text="Password" minWidth="150">
+                  </Button>
+                  <Button id="registrazioneButton" alignment="CENTER" contentDisplay="CENTER" onAction="#registrazioneClicked" text="Pagina di registrazione" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
                      <font>
-                        <Font size="18.0" /> <!-- Aumentato il font -->
+                        <Font size="18.0" />
                      </font>
-                  </Label>
-                  <!-- Usa PasswordField invece di TextField per censurare la password -->
-                  <PasswordField id="textFieldPassword" fx:id="tfPassword" promptText="Inserisci password..." prefWidth="350.0" maxWidth="350.0" style="-fx-font-size: 18px; -fx-padding: 5 10;"/> <!-- Ridotto padding -->
-               </HBox>
-
-               <!-- Spazio tra i textfield e i bottoni -->
-               <Region VBox.vgrow="ALWAYS" />
-
-               <!-- Buttons Row -->
-               <HBox alignment="CENTER" spacing="30"> <!-- Maggiore spazio tra i bottoni -->
-                  <children>
-                     <Button id="loginButton" alignment="CENTER" contentDisplay="CENTER" onAction="#accediClicked" text="Accedi" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                     </Button>
-                     
-                  </children>
-               </HBox>
-            </children>
-         </VBox>
-
-         <!-- Spazio per distanziare gli elementi -->
-         <Region VBox.vgrow="ALWAYS" />
-
-         <!-- Footer con sfondo grigio -->
-         <HBox alignment="CENTER" spacing="100" style="-fx-background-color: #a5a5a5; -fx-padding: 10 20;">
-            <children>
-               <Label alignment="CENTER" contentDisplay="CENTER" text="Monteventi - Di Capua - Magliarella">
-                  <font>
-                     <Font size="16.0" />
-                  </font>
-               </Label>
-               <Label alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management">
-                  <font>
-                     <Font size="16.0" />
-                  </font>
-               </Label>
-            </children>
-         </HBox>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
       </VBox>
    </children>
 </StackPane>
