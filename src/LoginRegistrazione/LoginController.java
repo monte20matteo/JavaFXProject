@@ -1,3 +1,4 @@
+package LoginRegistrazione;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class HomeController {
+public class LoginController {
 
     @FXML
     private TextField tfPassword;
@@ -19,7 +20,7 @@ public class HomeController {
     @FXML
     void accediClicked(ActionEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginRegistrazione/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login/Login.fxml"));
             Parent login = loader.load(); 
             Scene loginScene = new Scene(login); 
             Stage loginWindow = (Stage) tfPassword.getScene().getWindow();
@@ -32,7 +33,7 @@ public class HomeController {
         }
     }
 
-    /* @FXML
+    @FXML
     void creaNuovoUtenteClicked(ActionEvent event) {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Registration/Register.fxml"));
@@ -51,7 +52,6 @@ public class HomeController {
             System.out.println("Verificato un errore nel caricamento della finestra di registrazione: --> "+e.getMessage());
             // Gestione dell'eccezione nel caso in cui il caricamento della finestra di registrazione fallisca
         }
-    }*/
+    }
 
 }
-

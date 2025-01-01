@@ -73,11 +73,7 @@
                            <Font size="18.0" />
                         </font>
                      </Button>
-                     <Button id="registrazioneButton" alignment="CENTER" contentDisplay="CENTER" onAction="#creaNuovoUtenteClicked" text="Crea nuovo utente" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                     </Button>
+                     
                   </children>
                </HBox>
             </children>
