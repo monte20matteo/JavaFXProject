@@ -5,10 +5,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.layout.BorderPane;
 
 public class HomeController {
 
-    @FXML private Label target; // Dichiarazione del campo target, collegato all'elemento Label nel file FXML
+    @FXML
+    private Label target; // Dichiarazione del campo target, collegato all'elemento Label nel file FXML
 
     @FXML
     void loginClicked(ActionEvent event) {

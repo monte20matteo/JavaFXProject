@@ -2,37 +2,42 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
-   <children>
+<BorderPane fx:id="homePage" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
+   <!-- Header in alto -->
+   <top>
+      <HBox alignment="CENTER" style="-fx-background-color: #a5a5a5; -fx-padding: 10 20;">
+         <children>
+            <Label id="homePageTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Home page - JavaStart" style="-fx-text-fill: #000000;">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   
+   <!-- Contenuto centrale -->
+   <center>
       <VBox alignment="CENTER" spacing="20.0">
          <children>
             <!-- Etichetta centrata sopra i pulsanti -->
-            <Label fx:id="target" text="Monteventi - Di Capua - Magliarella" />
+            <Label text="Università di Bologna - Informatica per il management - Programmazione intenet" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill:rgb(255, 255, 255);" />
+            <Label fx:id="target" text="Di Capua - Magliarella - Monteventi" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill:rgb(255, 255, 255);" />
             
             <!-- HBox per disporre i pulsanti uno accanto all'altro -->
-            <HBox alignment="CENTER" spacing="30.0"> <!-- Maggiore spazio tra i pulsanti -->
+            <HBox alignment="CENTER" spacing="30.0">
                <children>
-                  <Button id="loginButton" alignment="CENTER" contentDisplay="CENTER" onAction="#loginClicked" text="Pagina di login" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button id="registrazioneButton" alignment="CENTER" contentDisplay="CENTER" onAction="#registrazioneClicked" text="Pagina di registrazione" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
+                  <Button id="loginButton" onAction="#loginClicked" text="Pagina di login" style="-fx-font-size: 18px; -fx-padding: 10 20;" />
+                  <Button id="registrazioneButton" onAction="#registrazioneClicked" text="Pagina di registrazione" style="-fx-font-size: 18px; -fx-padding: 10 20;" />
                </children>
             </HBox>
          </children>
       </VBox>
-   </children>
-</StackPane>
+   </center>
+</BorderPane>

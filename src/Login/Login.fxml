@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginController">
+<StackPane fx:id="loginPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginController">
    <children>
       <!-- VBox principale con allineamento al centro -->
       <VBox spacing="25" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
@@ -32,7 +32,7 @@
          <VBox spacing="20" alignment="CENTER"> <!-- Maggiore spacing tra i campi di input -->
             <children>
                <!-- Titolo sopra al primo campo -->
-               <Label id="loginTitle2" text="Benvenuto" alignment="CENTER">
+               <Label id="loginTitle2" text="Benvenuto" alignment="CENTER" style="-fx-text-fill:rgb(255, 255, 255);">
                   <font>
                      <Font size="24.0" />
                   </font>
@@ -40,7 +40,7 @@
                
                <!-- Username Row -->
                <HBox alignment="CENTER">
-                  <Label text="Username" minWidth="150">
+                  <Label text="Username" minWidth="150" style="-fx-text-fill:rgb(255, 255, 255);">
                      <font>
                         <Font size="18.0" /> <!-- Aumentato il font -->
                      </font>
@@ -53,7 +53,7 @@
 
                <!-- Password Row -->
                <HBox alignment="CENTER">
-                  <Label text="Password" minWidth="150">
+                  <Label text="Password" minWidth="150" style="-fx-text-fill:rgb(255, 255, 255);">
                      <font>
                         <Font size="18.0" /> <!-- Aumentato il font -->
                      </font>
@@ -94,7 +94,7 @@
                      <Font size="16.0" />
                   </font>
                </Label>
-               <Label alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management">
+               <Label alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management - Programmazione intenet">
                   <font>
                      <Font size="16.0" />
                   </font>
