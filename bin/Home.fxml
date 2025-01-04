@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="homePage" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
+<BorderPane fx:id="homePage" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" styleClass="home-background" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
    <!-- Header in alto -->
    <top>
-      <HBox alignment="CENTER" style="-fx-background-color: #a5a5a5; -fx-padding: 10 20;">
+      <HBox alignment="CENTER" id="headerUp">
          <children>
-            <Label id="homePageTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Home page - JavaStart" style="-fx-text-fill: #000000;">
+            <Label id="homePageTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Home page - JavaStart">
                <font>
                   <Font size="30.0" />
                </font>
@@ -28,7 +28,7 @@
          <children>
             <!-- Etichetta centrata sopra i pulsanti -->
             <Label text="Università di Bologna - Informatica per il management - Programmazione intenet" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill:rgb(255, 255, 255);" />
-            <Label fx:id="target" text="Di Capua - Magliarella - Monteventi" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill:rgb(255, 255, 255);" />
+            <Label fx:id="target1" text="Di Capua - Magliarella - Monteventi" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill:rgb(255, 255, 255);" />
             
             <!-- HBox per disporre i pulsanti uno accanto all'altro -->
             <HBox alignment="CENTER" spacing="30.0">

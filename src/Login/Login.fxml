@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="loginPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginController">
+<StackPane fx:id="loginPage" style="-fx-background-color:rgb(217, 216, 216); " maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginController">
    <children>
       <!-- VBox principale con allineamento al centro -->
       <VBox spacing="25" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
          <!-- Header con sfondo grigio -->
-         <HBox alignment="CENTER" style="-fx-background-color: #a5a5a5; -fx-padding: 10 20;">
+         <HBox alignment="CENTER" id="headerUp">
             <children>
                <Label id="loginTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Login">
                   <font>
@@ -68,12 +68,12 @@
                <!-- Buttons Row -->
                <HBox alignment="CENTER" spacing="30"> <!-- Maggiore spazio tra i bottoni -->
                   <children>
-                     <Button id="loginButton" alignment="CENTER" contentDisplay="CENTER" onAction="#accediClicked" text="Accedi" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
+                     <Button id="loginButton" alignment="CENTER" contentDisplay="CENTER" onAction="#acc" text="Accedi" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
                         <font>
                            <Font size="18.0" />
                         </font>
                      </Button>
-                     <Button id="registrazioneButton" alignment="CENTER" contentDisplay="CENTER" onAction="#creaNuovoUtenteClicked" text="Crea nuovo utente" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
+                     <Button id="registrazioneButton" alignment="CENTER" contentDisplay="CENTER" onAction="#reg" text="Crea nuovo utente" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
                         <font>
                            <Font size="18.0" />
                         </font>

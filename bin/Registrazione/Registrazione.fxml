@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="loginPage" style="-fx-background-color:rgb(217, 216, 216); " maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginController">
+<StackPane fx:id="registrazionePage" style="-fx-background-color:rgb(217, 216, 216); " maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Registrazione.RegistrazioneController">
    <children>
       <!-- VBox principale con allineamento al centro -->
       <VBox spacing="25" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
          <!-- Header con sfondo grigio -->
          <HBox alignment="CENTER" id="headerUp">
             <children>
-               <Label id="loginTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Login">
+               <Label id="loginTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Registrazione">
                   <font>
                      <Font size="30.0" />  <!-- Aumentato il font -->
                   </font>

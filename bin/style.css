@@ -1,7 +1,12 @@
-#loginTitle, #loginTitle2,{
+#loginTitle, #loginTitle2, #homePageTitle{
     -fx-alignment: center;
     -fx-font-weight: bold;
     -fx-text-fill: #000000;
+}
+
+#headerUp{
+    -fx-background-color: #a5a5a5;
+    -fx-padding: 30;
 }
 
 #loginButton, #registrazioneButton{
@@ -39,7 +44,8 @@
     -fx-prompt-text-fill: #000000; /* Mantiene il placeholder visibile anche in focus */
 }
 
-.root {
+/* sfondo solo per la home*/
+.home-background {
     -fx-background-image: url("img/javaSfondo.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
