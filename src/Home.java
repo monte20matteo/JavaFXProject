@@ -20,10 +20,13 @@ public class Home extends Application{
         try {
             // Carica il file FXML che definisce l'interfaccia utente
             Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-            primaryStage.setTitle("Home page - JavaStart");
+            primaryStage.setTitle("JavaStart");
 
             // Crea una nuova scena con il contenuto definito nel file FXML
             Scene scene = new Scene(root);
+
+            // Imposta la finestra come massimizzata
+            primaryStage.setMaximized(true);
 
             // Imposta la scena come contenuto della finestra principale (Stage)
             primaryStage.setScene(scene);

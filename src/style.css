@@ -1,10 +1,10 @@
-#loginTitle, #homePageTitle{
+#loginTitle, #homePageTitle, #registrazioneTitle, #registrazioneTitle2{
     -fx-alignment: center;
     -fx-font-weight: bold;
     -fx-text-fill: #000000;
 }
 
-#labelUsername, #labelPassword, #labelRegistrazione, #labelHome, #loginTitle2{
+#labelUsername, #labelPassword, #labelRegistrazione, #labelConfermaPassword, #labelAccesso, #labelHome, #loginTitle2{
     -fx-text-fill: #000000;
     -fx-font-weight: bold;
 }

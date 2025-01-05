@@ -8,18 +8,22 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
-<StackPane fx:id="registrazionePage" style="-fx-background-color:rgb(217, 216, 216); " maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Registrazione.RegistrazioneController">
+<StackPane fx:id="registrazionePage" style="-fx-background-color:rgb(217, 216, 216);" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Registrazione.RegistrazioneController">
    <children>
       <!-- VBox principale con allineamento al centro -->
       <VBox spacing="25" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
+      
          <!-- Header con sfondo grigio -->
          <HBox alignment="CENTER" id="headerUp">
             <children>
-               <Label id="loginTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Registrazione">
+               <Label id="registrazioneTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Registrazione - JavaStart">
                   <font>
-                     <Font size="30.0" />  <!-- Aumentato il font -->
+                     <Font size="30.0" />
                   </font>
                </Label>
             </children>
@@ -28,60 +32,88 @@
          <!-- Spazio per distanziare gli elementi -->
          <Region VBox.vgrow="ALWAYS" />
 
-         <!-- Main Content: i campi di input -->
-         <VBox spacing="20" alignment="CENTER"> <!-- Maggiore spacing tra i campi di input -->
+         <!-- Contenitore con sfondo bianco per il contenuto centrale, centrato orizzontalmente -->
+         <Pane prefWidth="620" prefHeight="500" style="-fx-background-color: #a5a5a5; -fx-padding: 30; -fx-background-radius: 20;" maxWidth="620" maxHeight="500">
             <children>
-               <!-- Titolo sopra al primo campo -->
-               <Label id="loginTitle2" text="Benvenuto" alignment="CENTER" style="-fx-text-fill:rgb(255, 255, 255);">
-                  <font>
-                     <Font size="24.0" />
-                  </font>
-               </Label>
-               
-               <!-- Username Row -->
-               <HBox alignment="CENTER">
-                  <Label text="Username" minWidth="150" style="-fx-text-fill:rgb(255, 255, 255);">
-                     <font>
-                        <Font size="18.0" /> <!-- Aumentato il font -->
-                     </font>
-                  </Label>
-                  <TextField id="textFieldUsername" fx:id="tfUsername" promptText="Inserisci username..." prefWidth="350.0" maxWidth="350.0" style="-fx-font-size: 18px; -fx-padding: 5 10;"/> <!-- Ridotto padding -->
-               </HBox>
-               
-               <!-- Spazio tra Username e Password -->
-               <Region VBox.vgrow="ALWAYS" /> <!-- Aggiungi spazio tra i campi -->
-
-               <!-- Password Row -->
-               <HBox alignment="CENTER">
-                  <Label text="Password" minWidth="150" style="-fx-text-fill:rgb(255, 255, 255);">
-                     <font>
-                        <Font size="18.0" /> <!-- Aumentato il font -->
-                     </font>
-                  </Label>
-                  <!-- Usa PasswordField invece di TextField per censurare la password -->
-                  <PasswordField id="textFieldPassword" fx:id="tfPassword" promptText="Inserisci password..." prefWidth="350.0" maxWidth="350.0" style="-fx-font-size: 18px; -fx-padding: 5 10;"/> <!-- Ridotto padding -->
-               </HBox>
-
-               <!-- Spazio tra i textfield e i bottoni -->
-               <Region VBox.vgrow="ALWAYS" />
-
-               <!-- Buttons Row -->
-               <HBox alignment="CENTER" spacing="30"> <!-- Maggiore spazio tra i bottoni -->
+               <!-- Main Content: i campi di input -->
+               <VBox spacing="10" alignment="CENTER">
                   <children>
-                     <Button id="loginButton" alignment="CENTER" contentDisplay="CENTER" onAction="#acc" text="Accedi" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
+                     <!-- Spazio aggiuntivo prima del titolo "Benvenuto" -->
+                     <Region prefHeight="30" />
+
+                     <!-- Titolo sopra al primo campo -->
+                     <Label id="registrazioneTitle2" text="Benvenuto" alignment="CENTER">
                         <font>
-                           <Font size="18.0" />
+                           <Font size="24.0" />
                         </font>
-                     </Button>
-                     <Button id="registrazioneButton" alignment="CENTER" contentDisplay="CENTER" onAction="#reg" text="Crea nuovo utente" style="-fx-font-size: 18px; -fx-padding: 10 20;"> <!-- Aumentata la dimensione del font e il padding -->
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                     </Button>
+                     </Label>
+
+                     <!-- Username Row -->
+                     <HBox alignment="CENTER" spacing="10" style="-fx-padding: 0 0 0 30;">
+                        <Label id="labelUsername" text="Username" minWidth="180" prefWidth="150" style="-fx-alignment: CENTER_LEFT;">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField id="textFieldUsername" fx:id="tfUsername" promptText="Inserisci username..." prefWidth="350.0" maxWidth="350.0" style="-fx-font-size: 18px; -fx-padding: 5 10;" HBox.hgrow="ALWAYS"/>
+                     </HBox>
+
+                     <!-- Password Row -->
+                     <HBox alignment="CENTER" spacing="10" style="-fx-padding: 0 0 0 30;">
+                        <Label id="labelPassword" text="Password" minWidth="180" prefWidth="150" style="-fx-alignment: CENTER_LEFT;">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <PasswordField id="textFieldPassword" fx:id="tfPassword" promptText="Inserisci password..." prefWidth="350.0" maxWidth="350.0" style="-fx-font-size: 18px; -fx-padding: 5 10;" HBox.hgrow="ALWAYS"/>
+                     </HBox>
+
+                     <!-- Conferma password Row -->
+                     <HBox alignment="CENTER" spacing="10" style="-fx-padding: 0 0 0 30;">
+                        <Label id="labelConfermaPassword" text="Conferma password" minWidth="180" prefWidth="150" style="-fx-alignment: CENTER_LEFT;">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <PasswordField id="textFieldPassword" fx:id="tfcPassword" promptText="Inserisci password..." prefWidth="350.0" maxWidth="350.0" style="-fx-font-size: 18px; -fx-padding: 5 10;" HBox.hgrow="ALWAYS"/>
+                     </HBox>
+
+                     <!-- Buttons Column -->
+                     <VBox alignment="CENTER" spacing="15">
+                        <children>
+                           <Button id="registrazioneButton" alignment="CENTER" contentDisplay="CENTER" onAction="#reg" text="Registrati" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;">
+                           </Button>
+
+                           <Region prefHeight="10" />
+
+                           <HBox alignment="CENTER" spacing="10">
+                              <children>
+                                 <Label id="labelAccesso" text="Hai già un account?" style="-fx-font-size: 16px;"/>
+                                 <Button id="loginButton" alignment="CENTER" contentDisplay="CENTER" onAction="#accediClicked" text="Accedi" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;">
+                                 </Button>
+                              </children>
+                           </HBox>
+
+                           <HBox alignment="CENTER" spacing="10">
+                              <children>
+                                 <Label id="labelHome" text="Torna alla home" style="-fx-font-size: 16px;"/>
+                                 <Button id="tornaHomeButton" alignment="CENTER" contentDisplay="CENTER" onAction="#homeClicked" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;">
+                                    <graphic>
+                                       <ImageView fitWidth="32" fitHeight="32" preserveRatio="true" smooth="true">
+                                          <image>
+                                             <Image url="img/homeIcon.png" />
+                                          </image>
+                                       </ImageView>
+                                    </graphic>
+                                 </Button>
+                              </children>
+                           </HBox>
+                        </children>
+                     </VBox>
                   </children>
-               </HBox>
+               </VBox>
             </children>
-         </VBox>
+         </Pane>
 
          <!-- Spazio per distanziare gli elementi -->
          <Region VBox.vgrow="ALWAYS" />
@@ -89,12 +121,12 @@
          <!-- Footer con sfondo grigio -->
          <HBox alignment="CENTER" spacing="100" style="-fx-background-color: #a5a5a5; -fx-padding: 10 20;">
             <children>
-               <Label alignment="CENTER" contentDisplay="CENTER" text="Monteventi - Di Capua - Magliarella">
+               <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Monteventi - Di Capua - Magliarella">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <Label alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management - Programmazione intenet">
+               <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management - Programmazione intenet">
                   <font>
                      <Font size="16.0" />
                   </font>
