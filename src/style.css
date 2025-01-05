@@ -1,7 +1,12 @@
-#loginTitle, #loginTitle2, #homePageTitle{
+#loginTitle, #homePageTitle{
     -fx-alignment: center;
     -fx-font-weight: bold;
     -fx-text-fill: #000000;
+}
+
+#labelUsername, #labelPassword, #labelRegistrazione, #labelHome, #loginTitle2{
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
 }
 
 #headerUp{
@@ -9,8 +14,8 @@
     -fx-padding: 30;
 }
 
-#loginButton, #registrazioneButton{
-    -fx-background-color: #a5a5a5;
+#loginButton, #registrazioneButton, #tornaHomeButton{
+    -fx-background-color: #7e7d7d;
     -fx-text-fill: #000000; 
     -fx-background-radius: 10px; /* Arrotondamento degli angoli */
     -fx-border-radius: 10px;
@@ -20,14 +25,14 @@
 }
 
 /* effetto al passaggio del mouse */
-#loginButton:hover, #registrazioneButton:hover {
+#loginButton:hover, #registrazioneButton:hover, #tornaHomeButton:hover{
     -fx-background-color: #000000; /* Cambia colore di sfondo */
-    -fx-text-fill: #a5a5a5; /* Colore del testo durante l'hover */
+    -fx-text-fill: #7e7d7d; /* Colore del testo durante l'hover */
 }
 
 /* effetto al clic */
-#registrazioneButton:pressed, #loginButton:pressed {
-    -fx-background-color: #a5a5a5;
+#registrazioneButton:pressed, #loginButton:pressed, #tornaHomeButton:pressed{
+    -fx-background-color: #7e7d7d;
     -fx-text-fill: #000000;
 }
 
