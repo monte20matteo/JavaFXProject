@@ -72,7 +72,7 @@
                      <!-- Buttons Column -->
                      <VBox alignment="CENTER" spacing="15">
                         <children>
-                           <Button id="loginButton" alignment="CENTER" contentDisplay="CENTER" onAction="#acc" text="Accedi" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;">
+                           <Button id="loginButton" alignment="CENTER" contentDisplay="CENTER" onAction="#accediClicked" text="Accedi" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;">
                            </Button>
 
                            <Region prefHeight="10" />
