@@ -2,10 +2,10 @@
 
 
     // MONTE -----------------------------------------------------------------------------------------------------------------
-   /* "java.project.sourcePaths": ["src"],
+   "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**//*.jar",
+        "lib/**/*.jar",
         "c:\\Java\\javafx-sdk-23.0.1\\lib\\javafx.base.jar",
         "c:\\Java\\javafx-sdk-23.0.1\\lib\\javafx.controls.jar",
         "c:\\Java\\javafx-sdk-23.0.1\\lib\\javafx.fxml.jar",
@@ -14,14 +14,14 @@
         "c:\\Java\\javafx-sdk-23.0.1\\lib\\javafx.swing.jar",
         "c:\\Java\\javafx-sdk-23.0.1\\lib\\javafx.web.jar",
         "c:\\Java\\javafx-sdk-23.0.1\\lib\\javafx-swt.jar"
-    ] */
+    ] 
     // MONTE -----------------------------------------------------------------------------------------------------------------
     
 
 
 
     // LUCA -----------------------------------------------------------------------------------------------------------------
-    
+    /*
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": {
@@ -30,7 +30,7 @@
             "/Users/lucadicapua/javafx-sdk-23.0.1/lib/*.jar",
         ]
     }
-   
+   */
     // LUCA -----------------------------------------------------------------------------------------------------------------
 
 }
