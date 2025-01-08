@@ -5,7 +5,7 @@
 
     
     // MONTE -----------------------------------------------------------------------------------------------------------------
-    "version": "0.2.0",
+   /* "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
@@ -22,30 +22,24 @@
             "vmArgs": "--module-path \"C:/Java/javafx-sdk-23.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
-    // MONTE -----------------------------------------------------------------------------------------------------------------
+    */// MONTE -----------------------------------------------------------------------------------------------------------------
 
 
 
-    /*
+    
     // LUCA -----------------------------------------------------------------------------------------------------------------
+    
     "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
-            "name": "App",
+            "name": "Launch Home",
             "request": "launch",
-            "mainClass": "App",
-        },
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "App",
-            "projectName": "JavaFXProject_b315e43f",
+            "mainClass": "Home",
             "vmArgs": "--module-path /Users/lucadicapua/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml"
         }
     ]
     // LUCA -----------------------------------------------------------------------------------------------------------------
-    */
+   
    
 }
