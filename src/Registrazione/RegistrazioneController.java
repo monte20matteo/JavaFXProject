@@ -79,7 +79,7 @@ public class RegistrazioneController {
     }
 
 
-    @FXML
+    /*@FXML
     void registrazioneClicked(ActionEvent event) {
 
         String username = tfUsername.getText();
@@ -143,7 +143,51 @@ public class RegistrazioneController {
                 showAlert("Errore", "Si è verificato un errore durante la registrazione", e.getMessage());
             }
         }
+    }*/
+
+    @FXML
+    void registrazioneClicked(ActionEvent event) {
+    String username = tfUsername.getText();
+    String password = tfPassword.getText();
+    String confirmPassword = tfcPassword.getText();
+
+    // Controlla se i campi sono validi
+    if (doValidation(username, password, confirmPassword)) {
+        try {
+            File file = new File("src/Data/users.csv");
+
+            // Controlla se il file esiste e se l'username è già presente
+            if (file.exists() && !check(username)) {
+                return; // Interrompe il flusso se l'username esiste
+            }
+
+            // Crea un nuovo oggetto Utente
+            Utente utente = new Utente(username, password);
+
+            // Scrive i dati dell'utente nel file
+            FileWriter fileWriter = new FileWriter(file, true);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.println(utente.onFile()); // Usa il metodo onFile() per formattare i dati
+            printWriter.close();
+
+            // Carica la schermata Front.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Front/Front.fxml"));
+            Parent front = loader.load();
+
+            FrontController frontController = loader.getController();
+            frontController.setUtente(utente);
+
+            Scene froScene = new Scene(front);
+            Stage stage = (Stage) tfUsername.getScene().getWindow();
+            stage.setScene(froScene);
+            stage.show();
+
+        } catch (Exception e) {
+            showAlert("Errore", "Si è verificato un errore durante la registrazione", e.getMessage());
+        }
     }
+}
+
 
     // Metodo che controlla se i campi sono vuoti
     private boolean doValidation(String username, String password, String confirmPassword) {
