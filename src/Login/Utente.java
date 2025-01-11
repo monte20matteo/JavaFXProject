@@ -60,21 +60,21 @@ public class Utente {
             while (scan.hasNextLine()){
                 String[] line = scan.nextLine().split(",");
                 if (line[0].equals(user) && line[1].equals(password)) {
-                    this.score[0] = Double.parseDouble(line[3]);
-                    this.score[1] = Double.parseDouble(line[4]);
-                    this.score[2] = Double.parseDouble(line[5]);
-                    this.score[3] = Double.parseDouble(line[6]);
-                    this.score[4] = Double.parseDouble(line[7]);
-                    this.score[5] = Double.parseDouble(line[8]);
-                    this.score[6] = Double.parseDouble(line[9]);
-                    this.score[7] = Double.parseDouble(line[10]);
-                    this.score[8] = Double.parseDouble(line[11]);
+                    this.score[0] = Double.parseDouble(line[2]);
+                    this.score[1] = Double.parseDouble(line[3]);
+                    this.score[2] = Double.parseDouble(line[4]);
+                    this.score[3] = Double.parseDouble(line[5]);
+                    this.score[4] = Double.parseDouble(line[6]);
+                    this.score[5] = Double.parseDouble(line[7]);
+                    this.score[6] = Double.parseDouble(line[8]);
+                    this.score[7] = Double.parseDouble(line[9]);
+                    this.score[8] = Double.parseDouble(line[10]);
                     break;
                 }
             }
             scan.close();
         } catch (Exception e) {
-            System.out.println("Errorex: " + e.getMessage());
+            System.out.println("Errore: " + e.getMessage());
             e.printStackTrace();
         }
     }
