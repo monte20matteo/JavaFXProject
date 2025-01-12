@@ -36,7 +36,7 @@ public class Utente {
     //metodo toString per stampare il benvenuto
     @Override
     public String toString() {
-        return "Welcome " + this.username;
+        return "Benvenuto " + this.username;
     }
 
     public double[] getScore() {

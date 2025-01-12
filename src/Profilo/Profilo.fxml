@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="Profilo.ProfiloController" spacing="20" alignment="CENTER" prefWidth="600" prefHeight="400" style="-fx-background-color: #e6f0ff; -fx-padding: 20px;">
+    <children>
+        <Label text="Profilo Utente" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Label fx:id="usernameLabel" text="USERNAME: " style="-fx-font-size: 16px;"/>
+        <HBox spacing="10" alignment="CENTER">
+            <children>
+                <Label fx:id="passwordLabel" text="PASSWORD: " style="-fx-font-size: 16px;"/>
+                <Label fx:id="maskedPasswordLabel" text="********" style="-fx-font-size: 16px;"/>
+                <Button fx:id="togglePasswordButton" text="VEDI" onAction="#VisualizzaPassword" style="-fx-font-size: 14px; -fx-background-color: #87CEEB; -fx-text-fill: white; -fx-background-radius: 20px; -fx-padding: 8px 15px; -fx-cursor: hand;"/>
+            </children>
+        </HBox>
+        <Button text="LOGOUT" onAction="#logoutClicked" prefWidth="200.0" style="-fx-font-size: 14px; -fx-background-color: #87CEEB; -fx-text-fill: white; -fx-background-radius: 20px; -fx-padding: 8px 15px; -fx-cursor: hand;"/>
+        <Button text="TORNA ALLA DASHBOARD" onAction="#tornaDashboardClicked" prefWidth="200.0" style="-fx-font-size: 14px; -fx-background-color: #87CEEB; -fx-text-fill: white; -fx-background-radius: 20px; -fx-padding: 8px 15px; -fx-cursor: hand;"/>
+    </children>
+</VBox>

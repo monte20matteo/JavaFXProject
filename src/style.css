@@ -14,7 +14,7 @@
     -fx-padding: 30;
 }
 
-#loginButton, #registrazioneButton, #tornaHomeButton{
+#loginButton, #registrazioneButton, #tornaHomeButton, #profileButton{
     -fx-background-color: #7e7d7d;
     -fx-text-fill: #000000; 
     -fx-background-radius: 10px; /* Arrotondamento degli angoli */
@@ -25,13 +25,13 @@
 }
 
 /* effetto al passaggio del mouse */
-#loginButton:hover, #registrazioneButton:hover, #tornaHomeButton:hover{
+#loginButton:hover, #registrazioneButton:hover, #tornaHomeButton:hover, #profileButton:hover{
     -fx-background-color: #000000; /* Cambia colore di sfondo */
     -fx-text-fill: #7e7d7d; /* Colore del testo durante l'hover */
 }
 
 /* effetto al clic */
-#registrazioneButton:pressed, #loginButton:pressed, #tornaHomeButton:pressed{
+#registrazioneButton:pressed, #loginButton:pressed, #tornaHomeButton:pressed, #profileButton:pressed{
     -fx-background-color: #7e7d7d;
     -fx-text-fill: #000000;
 }

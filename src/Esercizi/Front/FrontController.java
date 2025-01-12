@@ -2,6 +2,7 @@ package Esercizi.Front;
 
 import Login.Utente;
 //import profile.ProfiloController;
+import Profilo.ProfiloController;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -39,6 +40,7 @@ public class FrontController implements Initializable{
     @FXML private Button buttonTest;
     private Utente utente;
 
+   
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,7 +49,7 @@ public class FrontController implements Initializable{
             if (newScene != null) {
                 newScene.windowProperty().addListener((obs, oldWindow, newWindow) -> {
                     if (newWindow != null) {
-                        showProgress();  // Chiamare showprogress quando la finestra è mostrata
+                        //showProgress();  // Chiamare showprogress quando la finestra è mostrata
                         mostraTestFinale(); // chiamato per vedere se l'utente ha completato tutti i test
                     }
                 });
@@ -73,12 +75,12 @@ public class FrontController implements Initializable{
 
 
 
-/* 
+
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //metodo per andare alla schermata del profilo
     @FXML private void goProfilo(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile/Profilo.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Profilo/Profilo.fxml"));
             Parent profilo = loader.load();
             ProfiloController profiloController = loader.getController();
             profiloController.setUtente(utente);
@@ -91,6 +93,7 @@ public class FrontController implements Initializable{
         }
     }
 
+    /* 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //metodo per andare alla schermata di cosaStampa rules
     @FXML private void goRegoleCosaStampa(MouseEvent event){
@@ -145,7 +148,7 @@ public class FrontController implements Initializable{
 */
 
 
-
+/* 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //metodo per mostrare l'avanzamento dell'utente a seconda dell'esercizio
     @FXML private void showProgress(){
@@ -209,7 +212,7 @@ public class FrontController implements Initializable{
     }
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+*/
 
 
 
