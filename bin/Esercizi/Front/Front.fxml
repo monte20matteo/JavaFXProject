@@ -7,8 +7,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+
+
+
 <!--
 
 <Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e6f0ff;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esercizi.Front.FrontController">
@@ -63,13 +69,28 @@
 
 -->
 
-<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e6f0ff;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esercizi.Front.FrontController">
+
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(217, 216, 216);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../style.css"  fx:controller="Esercizi.Front.FrontController">
     <children>
-        <AnchorPane prefHeight="46.0" prefWidth="600.0" style="-fx-background-color: #b3d9ff;">
-            <children>
-                <Button id="profileButton" layoutX="430.0" layoutY="5.0" mnemonicParsing="false" onAction="#goProfilo" text="PROFILO" />
-                <Label id="utente" fx:id="nameUser" layoutX="14.0" layoutY="8.0" prefHeight="30.0" prefWidth="133.0" />
-            </children>
-        </AnchorPane>
+        <!-- VBox principale con allineamento al centro -->
+        <VBox spacing="25" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
+            <!-- Header con sfondo grigio -->
+            <HBox id="headerUp">
+                <children>
+                    <!-- Label per il nome utente -->
+                    <Label id="utente" fx:id="nameUser" layoutX="14.0" layoutY="8.0" prefHeight="30.0" prefWidth="133.0" />
+                    <!-- Pulsante per il profilo -->
+                    <Button id="profileButton" onAction="#goProfilo" text="Profilo" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;"/>
+               
+                </children>
+            </HBox>
+
+            <!-- Spazio elastico per distanziare gli elementi -->
+            <Region VBox.vgrow="ALWAYS" />
+
+            <!-- Footer o altre sezioni possono essere aggiunti qui -->
+        </VBox>
     </children>
-</Pane>
+</StackPane>
+
+

@@ -3,6 +3,8 @@ package Login;
 import java.io.File;
 import java.util.Scanner;
 
+
+
 public class Utente {
     private String username; //istanza username
     private String password; //istanza password
@@ -36,7 +38,7 @@ public class Utente {
     //metodo toString per stampare il benvenuto
     @Override
     public String toString() {
-        return "Benvenuto " + this.username;
+        return "Benvenuto in JavaStart " + this.username;
     }
 
     public double[] getScore() {
