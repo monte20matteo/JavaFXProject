@@ -1,23 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="Profilo.ProfiloController" spacing="20" alignment="CENTER" prefWidth="600" prefHeight="400" style="-fx-background-color: #e6f0ff; -fx-padding: 20px;">
+<StackPane xmlns:fx="http://javafx.com/fxml" 
+           fx:controller="Profilo.ProfiloController" 
+           prefHeight="394.0" 
+           stylesheets="@../style.css" 
+           style="-fx-background-color:rgb(217, 216, 216);">
     <children>
-        <Label text="Profilo Utente" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
-        <Label fx:id="usernameLabel" text="USERNAME: " style="-fx-font-size: 16px;"/>
-        <HBox spacing="10" alignment="CENTER">
-            <children>
-                <Label fx:id="passwordLabel" text="PASSWORD: " style="-fx-font-size: 16px;"/>
-                <Label fx:id="maskedPasswordLabel" text="********" style="-fx-font-size: 16px;"/>
-                <Button fx:id="togglePasswordButton" text="VEDI" onAction="#VisualizzaPassword" style="-fx-font-size: 14px; -fx-background-color: #87CEEB; -fx-text-fill: white; -fx-background-radius: 20px; -fx-padding: 8px 15px; -fx-cursor: hand;"/>
-            </children>
-        </HBox>
-        <Button text="LOGOUT" onAction="#logoutClicked" prefWidth="200.0" style="-fx-font-size: 14px; -fx-background-color: #87CEEB; -fx-text-fill: white; -fx-background-radius: 20px; -fx-padding: 8px 15px; -fx-cursor: hand;"/>
-        <Button text="TORNA ALLA DASHBOARD" onAction="#tornaDashboardClicked" prefWidth="200.0" style="-fx-font-size: 14px; -fx-background-color: #87CEEB; -fx-text-fill: white; -fx-background-radius: 20px; -fx-padding: 8px 15px; -fx-cursor: hand;"/>
+        <!-- VBox che contiene l'header, il contenuto centrale e il footer -->
+        <VBox spacing="25" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
+            <!-- Header in alto -->
+            <HBox alignment="CENTER" id="headerUp">
+                <children>
+                    <Label id="profileTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" 
+                           text="Profilo Utente - JavaStart">
+                        <font>
+                            <Font size="30.0" />
+                        </font>
+                    </Label>
+                </children>
+            </HBox>
+
+            <!-- Spazio elastico sopra il contenitore principale -->
+            <Region VBox.vgrow="ALWAYS" />
+
+            <!-- Contenitore con sfondo grigio per il contenuto centrale, con allineamento al centro -->
+            <Pane prefWidth="150" prefHeight="250" style="-fx-background-color: #a5a5a5; -fx-padding: 30; -fx-background-radius: 20;" maxWidth="270" maxHeight="500">
+                <children>
+                    <!-- Contenitore principale centrale centrato dentro il Pane -->
+                    <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+                        <children>
+                            <!-- Informazioni utente -->
+                            <Label fx:id="usernameLabel" text="USERNAME: " style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #000000;" />
+
+                            <!-- Password con pulsante per visualizzarla -->
+                            <HBox spacing="10" alignment="CENTER">
+                                <children>
+                                    <Label fx:id="passwordLabel" text="PASSWORD: " style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #000000;" />
+                                    <Label fx:id="maskedPasswordLabel" text="********" style="-fx-font-size: 18px; -fx-text-fill: #000000;" />
+                                    <Button id="visionePasswordButton" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" 
+                                            fx:id="togglePasswordButton" text="Vedi" onAction="#VisualizzaPassword" />
+                                </children>
+                            </HBox>
+
+                            <!-- Pulsanti per logout e ritorno alla dashboard -->
+                            <Button style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" 
+                                    text="Logout" id="logoutButton" onAction="#logoutClicked" />
+                            <Button style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" 
+                                    text="Torna alla dashboard" id="dashboardButton" onAction="#tornaDashboardClicked" />
+                        </children>
+                    </VBox>
+                </children>
+            </Pane>
+
+            <!-- Spazio elastico sotto il contenitore principale -->
+            <Region VBox.vgrow="ALWAYS" />
+
+            <!-- Footer con sfondo grigio -->
+            <HBox alignment="CENTER" spacing="100" style="-fx-background-color: #a5a5a5; -fx-padding: 10 20;">
+                <children>
+                    <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Di Capua - Magliarella - Monteventi">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
+                    </Label>
+                    <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management - Programmazione Internet">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
+                    </Label>
+                </children>
+            </HBox>
+        </VBox>
     </children>
-</VBox>
+</StackPane>

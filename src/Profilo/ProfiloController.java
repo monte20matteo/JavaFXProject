@@ -36,16 +36,21 @@ public class ProfiloController {
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    @FXML private void VisualizzaPassword() {
-        if (PasswordVisible) {
-            maskedPasswordLabel.setText("********");
-            togglePasswordButton.setText("VEDI");
-        } else {
-            maskedPasswordLabel.setText(utente.getPassword());
-            togglePasswordButton.setText("NASCONDI");
-        }
-        PasswordVisible = !PasswordVisible;
+@FXML private void VisualizzaPassword() {
+    if (PasswordVisible) {
+        // Maschera la password e imposta il testo "********"
+        maskedPasswordLabel.setText("********");
+        maskedPasswordLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #000000;");  // Formato per la password mascherata
+        togglePasswordButton.setText("Vedi");
+    } else {
+        // Mostra la password in chiaro
+        maskedPasswordLabel.setText(utente.getPassword());
+        maskedPasswordLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #000000;");  // Formato per la password in chiaro
+        togglePasswordButton.setText("Nascondi");
     }
+    PasswordVisible = !PasswordVisible;
+}
+
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
