@@ -1,7 +1,6 @@
 package Esercizi.Front;
 
 import Login.Utente;
-//import profile.ProfiloController;
 import Profilo.ProfiloController;
 
 import java.io.BufferedWriter;
@@ -49,7 +48,7 @@ public class FrontController implements Initializable{
             if (newScene != null) {
                 newScene.windowProperty().addListener((obs, oldWindow, newWindow) -> {
                     if (newWindow != null) {
-                        //showProgress();  // Chiamare showprogress quando la finestra è mostrata
+                        showProgress();  // Chiamare showprogress quando la finestra è mostrata
                         mostraTestFinale(); // chiamato per vedere se l'utente ha completato tutti i test
                     }
                 });
@@ -111,14 +110,15 @@ public class FrontController implements Initializable{
             e.printStackTrace();
         }
     }
+        */
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //metodo per andare alla schermata di OrdinaCodice rules
-@FXML private void goRegoleOrdineCorretto(MouseEvent event) {
+@FXML private void OrdinamentoCodiceClicked(MouseEvent event) {
     try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Catta/Rules.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Monteventi/RegoleOrdinamentoCodice.fxml"));
         Parent root = loader.load();
-        RulesController rulesController = loader.getController();
+        Esercizi.Monteventi.RegoleOrdinamentoCodiceController rulesController = loader.getController();
         rulesController.setUtente(utente);
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Label) event.getSource()).getScene().getWindow();
@@ -131,6 +131,7 @@ public class FrontController implements Initializable{
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //metodo per andare alla schermata di ConfrontaCodice rules
+/* 
 @FXML private void goRegoleConfrontaCodice(MouseEvent event) {
     try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Pontini/Rules.fxml"));
@@ -148,7 +149,6 @@ public class FrontController implements Initializable{
 */
 
 
-/* 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //metodo per mostrare l'avanzamento dell'utente a seconda dell'esercizio
     @FXML private void showProgress(){
@@ -157,17 +157,17 @@ public class FrontController implements Initializable{
             if(utente.getScore()[0] >= 0 && utente.getScore()[1] == 0 && utente.getScore()[2] == 0){
                 CosaStampaBar.setProgress(utente.getScore()[0]);
                 diffCS.setText("Facile");
-                diffCS.setStyle("-fx-text-fill: green;");
+                diffCS.setStyle("-fx-text-fill: green; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
             else if(utente.getScore()[0] == 1 && utente.getScore()[1] >= 0 && utente.getScore()[2] == 0){
                 CosaStampaBar.setProgress(utente.getScore()[1]);
                 diffCS.setText("Medio");
-                diffCS.setStyle("-fx-text-fill: orange;");
+                diffCS.setStyle("-fx-text-fill: orange; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
             else{
                 CosaStampaBar.setProgress(utente.getScore()[2]);
                 diffCS.setText("Difficile");
-                diffCS.setStyle("-fx-text-fill: red;");
+                diffCS.setStyle("-fx-text-fill: red; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
         }
 
@@ -176,17 +176,17 @@ public class FrontController implements Initializable{
             if(utente.getScore()[3] >= 0 && utente.getScore()[4] == 0 && utente.getScore()[5] == 0){
                 OrdinaCodiceBar.setProgress(utente.getScore()[3]);
                 diffOC.setText("Facile");
-                diffOC.setStyle("-fx-text-fill: green;");
+                diffOC.setStyle("-fx-text-fill: green; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
             else if(utente.getScore()[3] == 1 && utente.getScore()[4] >= 0 && utente.getScore()[5] == 0){
                 OrdinaCodiceBar.setProgress(utente.getScore()[4]);
                 diffOC.setText("Medio");
-                diffOC.setStyle("-fx-text-fill: orange;");
+                diffOC.setStyle("-fx-text-fill: orange; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
             else{
                 OrdinaCodiceBar.setProgress(utente.getScore()[5]);
                 diffOC.setText("Difficile");
-                diffOC.setStyle("-fx-text-fill: red;");
+                diffOC.setStyle("-fx-text-fill: red; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
         }
 
@@ -195,24 +195,23 @@ public class FrontController implements Initializable{
             if(utente.getScore()[6] >= 0 && utente.getScore()[7] == 0 && utente.getScore()[8] == 0){
                 ConfrontaCodiceBar.setProgress(utente.getScore()[6]);
                 diffCC.setText("Facile");
-                diffCC.setStyle("-fx-text-fill: green;");
+                diffCC.setStyle("-fx-text-fill: green; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
             else if(utente.getScore()[6] == 1 && utente.getScore()[7] >= 0 && utente.getScore()[8] == 0){
                 ConfrontaCodiceBar.setProgress(utente.getScore()[7]);
                 diffCC.setText("Medio");
-                diffCC.setStyle("-fx-text-fill: orange;");
+                diffCC.setStyle("-fx-text-fill: orange; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
             else{
                 ConfrontaCodiceBar.setProgress(utente.getScore()[8]);
                 diffCC.setText("Difficile");
-                diffCC.setStyle("-fx-text-fill: red;");
+                diffCC.setStyle("-fx-text-fill: red; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
         }
 
     }
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-*/
 
 
 

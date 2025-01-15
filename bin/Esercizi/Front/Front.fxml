@@ -12,85 +12,93 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-
-
-
-<!--
-
-<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e6f0ff;" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esercizi.Front.FrontController">
-    <children>
-        <AnchorPane prefHeight="46.0" prefWidth="600.0" style="-fx-background-color: #b3d9ff;">
-            <children>
-                <Button layoutX="520.0" layoutY="5.0" mnemonicParsing="false" onAction="#salva" style="-fx-background-color: #87CEEB; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 20px; -fx-padding: 8px 15px; -fx-cursor: hand;" text="SALVA" />
-                <Button layoutX="430.0" layoutY="5.0" mnemonicParsing="false" onAction="#goProfilo" style="-fx-background-color: #87CEEB; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 20px; -fx-padding: 8px 15px; -fx-cursor: hand;" text="PROFILO" />
-                <Label id="utente" fx:id="nameUser" layoutX="14.0" layoutY="8.0" prefHeight="30.0" prefWidth="133.0" />
-            </children>
-        </AnchorPane>
-        <GridPane layoutX="97.0" layoutY="77.0" prefHeight="247.0" prefWidth="406.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white; -fx-padding: 10px;">
-                    <children>
-                        <Label id="label-esercizi" onMouseClicked="#goRegoleCosaStampa" text="Cosa stampa?" />
-                        <Label id="difficult" fx:id="diffCS" />
-                        <ProgressBar fx:id="CosaStampaBar" prefWidth="200.0" progress="0.0" />
-                    </children>
-                </VBox>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white; -fx-padding: 10px;" GridPane.columnIndex="1">
-                    <children>
-                        <Label id="label-esercizi" onMouseClicked="#goRegoleOrdineCorretto" text="Ordina codice" />
-                        <Label id="difficult" fx:id="diffOC" text="" />
-                        <ProgressBar fx:id="OrdinaCodiceBar" prefWidth="200.0" progress="0.0" />
-                    </children>
-                </VBox>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white; -fx-padding: 10px;" GridPane.rowIndex="1">
-                    <children>
-                        <Label id="label-esercizi" onMouseClicked="#goRegoleConfrontaCodice" text="Confronta codice" />
-                        <Label id="difficult" fx:id="diffCC" text="" />
-                        <ProgressBar fx:id="ConfrontaCodiceBar" prefWidth="200.0" progress="0.0" />
-                    </children>
-                </VBox>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white; -fx-padding: 10px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                    <children>
-                        <Button fx:id="buttonTest" mnemonicParsing="false" onAction="#goFinale" style="-fx-background-color: #87CEEB; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 20px; -fx-padding: 8px 15px;" text="VERIFICA FINALE" disable="true"/>
-                    </children>
-                </VBox>
-            </children>
-        </GridPane>
-    </children>
-</Pane>
-
--->
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
 
 <StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(217, 216, 216);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../style.css"  fx:controller="Esercizi.Front.FrontController">
     <children>
         <!-- VBox principale con allineamento al centro -->
-        <VBox spacing="25" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
+        <VBox prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
             <!-- Header con sfondo grigio -->
-            <HBox id="headerUp">
+            <HBox id="headerUp" alignment="CENTER">
                 <children>
                     <!-- Label per il nome utente -->
-                    <Label id="utente" fx:id="nameUser" layoutX="14.0" layoutY="8.0" prefHeight="30.0" prefWidth="133.0" />
+                    <Label id="utente" fx:id="nameUser" prefHeight="30.0" prefWidth="260.0" style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Nome Utente" />
+                    <!-- Spazio flessibile -->
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label prefHeight="30.0" prefWidth="70.0" style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Profilo" />
                     <!-- Pulsante per il profilo -->
-                    <Button id="profileButton" onAction="#goProfilo" text="Profilo" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;"/>
-               
+                    <Button id="profileButton" onAction="#goProfilo">
+                        <graphic>
+                            <ImageView fitWidth="40" fitHeight="40" preserveRatio="true" smooth="true">
+                                <image>
+                                    <Image url="img/userIcon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
                 </children>
             </HBox>
 
-            <!-- Spazio elastico per distanziare gli elementi -->
-            <Region VBox.vgrow="ALWAYS" />
+        <!-- Spazio per distanziare gli elementi -->
+         <Region VBox.vgrow="ALWAYS" />
 
-            <!-- Footer o altre sezioni possono essere aggiunti qui -->
+         <!-- Contenitore per il contenuto centrale, centrato orizzontalmente -->
+         <Pane prefWidth="800" prefHeight="450" style="-fx-background-color: #a5a5a5; -fx-padding: 30; -fx-background-radius: 20;" maxWidth="800" maxHeight="600">
+            <children>
+
+            <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" layoutX="30" layoutY="30" style="-fx-padding: 10px; -fx-background-radius: 10;">
+            <children>
+                <Label id="label-esercizi" text="Cosa stampa?"/>
+                <Label id="difficult" fx:id="diffCS" />
+                <ProgressBar fx:id="CosaStampaBar" prefWidth="200.0" progress="0.0" />
+            </children>
+        </VBox>
+
+        <!-- VBox in alto a destra -->
+        <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" layoutX="450" layoutY="30" style="-fx-padding: 10px; -fx-background-radius: 10;">
+            <children>
+                <Label id="label-esercizi" text="Ordinamento codice" onMouseClicked="#OrdinamentoCodiceClicked"/>
+                <Label id="difficult" fx:id="diffOC" />
+                <ProgressBar fx:id="OrdinaCodiceBar" prefWidth="200.0" progress="0.0" />
+            </children>
+        </VBox>
+
+        <!-- VBox in basso a sinistra -->
+        <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" layoutX="30" layoutY="220" style="-fx-padding: 10px; -fx-background-radius: 10;">
+            <children>
+                <Label id="label-esercizi" text="Confronta codice"/>
+                <Label id="difficult" fx:id="diffCC" />
+                <ProgressBar fx:id="ConfrontaCodiceBar" prefWidth="200.0" progress="0.0" />
+            </children>
+        </VBox>
+            
+            </children>
+        </Pane>
+
+            <!-- Spazio per distanziare gli elementi -->
+         <Region VBox.vgrow="ALWAYS" />
+
+         <!-- Footer con sfondo grigio -->
+         <HBox alignment="CENTER" spacing="100" style="-fx-background-color: #a5a5a5; -fx-padding: 10 20;">
+            <children>
+               <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Di Capua - Magliarella - Monteventi">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management - Programmazione intenet">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+            </children>
+         </HBox>
         </VBox>
     </children>
 </StackPane>
+
 
 

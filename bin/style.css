@@ -14,7 +14,7 @@
     -fx-padding: 30;
 }
 
-#loginButton, #registrazioneButton, #tornaHomeButton, #profileButton, #logoutButton, #dashboardButton, #visionePasswordButton{
+#avantiButton, #indietroButton, #loginButton, #registrazioneButton, #tornaHomeButton, #profileButton, #logoutButton, #dashboardButton, #visionePasswordButton{
     -fx-background-color: #7e7d7d;
     -fx-text-fill: #000000; 
     -fx-background-radius: 10px; /* Arrotondamento degli angoli */
@@ -25,13 +25,13 @@
 }
 
 /* effetto al passaggio del mouse */
-#loginButton:hover, #registrazioneButton:hover, #tornaHomeButton:hover, #profileButton:hover, #logoutButton:hover, #dashboardButton:hover, #visionePasswordButton:hover{
+#avantiButton:hover, #indietroButton:hover, #loginButton:hover, #registrazioneButton:hover, #tornaHomeButton:hover, #profileButton:hover, #logoutButton:hover, #dashboardButton:hover, #visionePasswordButton:hover{
     -fx-background-color: #000000; /* Cambia colore di sfondo */
     -fx-text-fill: #7e7d7d; /* Colore del testo durante l'hover */
 }
 
 /* effetto al clic */
-#registrazioneButton:pressed, #loginButton:pressed, #tornaHomeButton:pressed, #profileButton:pressed, #logoutButton:pressed, #dashboardButton:pressed, #visionePasswordButton:pressed{
+#avantiButton:pressed, #indietroButton:pressed, #registrazioneButton:pressed, #loginButton:pressed, #tornaHomeButton:pressed, #profileButton:pressed, #logoutButton:pressed, #dashboardButton:pressed, #visionePasswordButton:pressed{
     -fx-background-color: #7e7d7d;
     -fx-text-fill: #000000;
 }
@@ -55,4 +55,17 @@
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
     -fx-background-position: center;
+}
+
+#label-esercizi{
+    -fx-alignment: center;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+#label-esercizi:hover{
+    -fx-text-fill: #000000;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 15, 0.5, 0, 2);
+    -fx-transition: all 0.3s ease-in-out;
 }
