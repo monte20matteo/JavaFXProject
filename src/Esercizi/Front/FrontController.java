@@ -31,10 +31,10 @@ public class FrontController implements Initializable{
     @FXML private Label nameUser;
     @FXML private Label diffCS;
     @FXML private Label diffOC;
-    @FXML private Label diffCC;
+    @FXML private Label diffTE;
     @FXML private ProgressBar CosaStampaBar;
     @FXML private ProgressBar OrdinaCodiceBar;
-    @FXML private ProgressBar ConfrontaCodiceBar;
+    @FXML private ProgressBar TrovaErroreBar;
     @FXML private Pane root;
     @FXML private Button buttonTest;
     private Utente utente;
@@ -92,15 +92,14 @@ public class FrontController implements Initializable{
         }
     }
 
-    /* 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //metodo per andare alla schermata di cosaStampa rules
-    @FXML private void goRegoleCosaStampa(MouseEvent event){
+    @FXML private void CosaStampaClicked(MouseEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Lippi/Rules.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Magliarella/RegoleCosaStampa.fxml"));
             Parent cosaStampa = loader.load();
-            Esercizi.Lippi.RulesController rulesLippi = loader.getController();
-            rulesLippi.setUtente(this.utente);
+            Esercizi.Magliarella.RegoleCosaStampaController rulesController = loader.getController();
+            rulesController.setUtente(this.utente);
             Scene cosaStampaScene = new Scene(cosaStampa);
             Stage stage = (Stage) ((Label) event.getSource()).getScene().getWindow(); //prova
             stage.setScene(cosaStampaScene);
@@ -110,10 +109,9 @@ public class FrontController implements Initializable{
             e.printStackTrace();
         }
     }
-        */
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//metodo per andare alla schermata di OrdinaCodice rules
+//metodo per andare alla schermata di OrdinaCodice 
 @FXML private void OrdinamentoCodiceClicked(MouseEvent event) {
     try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Monteventi/RegoleOrdinamentoCodice.fxml"));
@@ -130,13 +128,12 @@ public class FrontController implements Initializable{
 }
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//metodo per andare alla schermata di ConfrontaCodice rules
-/* 
-@FXML private void goRegoleConfrontaCodice(MouseEvent event) {
+//metodo per andare alla schermata di ConfrontaCodice 
+@FXML private void TrovaErroreClicked(MouseEvent event) {
     try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Pontini/Rules.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/DiCapua/RegoleTrovaErrore.fxml"));
         Parent root = loader.load();
-        Esercizi.Pontini.RulesController rulesController = loader.getController();
+        Esercizi.DiCapua.RegoleTrovaErroreController rulesController = loader.getController();
         rulesController.setUtente(utente);
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Label) event.getSource()).getScene().getWindow();
@@ -146,7 +143,6 @@ public class FrontController implements Initializable{
         e.printStackTrace();
     }
 }
-*/
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -190,22 +186,22 @@ public class FrontController implements Initializable{
             }
         }
 
-        //progress ConfrontaCodice
+        //progress trova l'errore
         for(int i = 6; i < 9; i++){
             if(utente.getScore()[6] >= 0 && utente.getScore()[7] == 0 && utente.getScore()[8] == 0){
-                ConfrontaCodiceBar.setProgress(utente.getScore()[6]);
-                diffCC.setText("Facile");
-                diffCC.setStyle("-fx-text-fill: green; -fx-font-weight: bold; -fx-font-size: 14px;");
+                TrovaErroreBar.setProgress(utente.getScore()[6]);
+                diffTE.setText("Facile");
+                diffTE.setStyle("-fx-text-fill: green; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
             else if(utente.getScore()[6] == 1 && utente.getScore()[7] >= 0 && utente.getScore()[8] == 0){
-                ConfrontaCodiceBar.setProgress(utente.getScore()[7]);
-                diffCC.setText("Medio");
-                diffCC.setStyle("-fx-text-fill: orange; -fx-font-weight: bold; -fx-font-size: 14px;");
+                TrovaErroreBar.setProgress(utente.getScore()[7]);
+                diffTE.setText("Medio");
+                diffTE.setStyle("-fx-text-fill: orange; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
             else{
-                ConfrontaCodiceBar.setProgress(utente.getScore()[8]);
-                diffCC.setText("Difficile");
-                diffCC.setStyle("-fx-text-fill: red; -fx-font-weight: bold; -fx-font-size: 14px;");
+                TrovaErroreBar.setProgress(utente.getScore()[8]);
+                diffTE.setText("Difficile");
+                diffTE.setStyle("-fx-text-fill: red; -fx-font-weight: bold; -fx-font-size: 14px;");
             }
         }
 
@@ -213,13 +209,10 @@ public class FrontController implements Initializable{
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-/* 
 //metodo per salvare i dati dell'utente
 @FXML private void salva(ActionEvent event){
                 try {
-            File inputFile = new File("Learn - program/src/Data/users.csv");
+            File inputFile = new File("src/Data/users.csv");
             if (!inputFile.exists()) {
                 System.out.println("Errore: il file di input non esiste.");
                 return;
@@ -230,7 +223,7 @@ public class FrontController implements Initializable{
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();// Leggo una riga
                 String[] elements = line.split(",");// Divido la riga in base alla virgola
-                if (elements.length >= 11) { // Verifica che ci siano almeno 11 elementi
+                if (elements.length >= 10) { // Verifica che ci siano almeno 10 elementi
                     lines.add(elements); // Aggiungo la riga al set
                 } else {
                     System.out.println("Riga con formato errato: " + line);
@@ -239,15 +232,15 @@ public class FrontController implements Initializable{
             scan.close();
 
         // Ora lavoro sul set
-            File outputFile = new File("Learn - program/src/Data/users.csv");
+            File outputFile = new File("src/Data/users.csv");
             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
             for (String[] s : lines) {
-                if (s[0].equals(utente.getUsername()) && s[1].equals(utente.getPassword()) && s[2].equals(utente.getEmail())) { // Eseguo il check sull'utente
+                if (s[0].equals(utente.getUsername()) && s[1].equals(utente.getPassword())) { // Eseguo il check sull'utente
                     s = utente.onFile().split(","); // Aggiorno la riga
                 }
-            // Controllo che l'array s abbia almeno 11 elementi prima di accedere agli indici
-                if (s.length >= 11) {
-                    writer.write(s[0] + "," + s[1] + "," + s[2] + "," + s[3] + "," + s[4] + "," + s[5] + "," + s[6] + "," + s[7] + "," + s[8]+ "," + s[9]+ "," + s[10]+ "," + s[11]);
+            // Controllo che l'array s abbia almeno 10 elementi prima di accedere agli indici
+                if (s.length >= 10) {
+                    writer.write(s[0] + "," + s[1] + "," + s[2] + "," + s[3] + "," + s[4] + "," + s[5] + "," + s[6] + "," + s[7] + "," + s[8]+ "," + s[9]+ "," + s[10]);
                     writer.newLine();
                 } else {
                     System.out.println("Riga con formato errato dopo aggiornamento: " + String.join(",", s));
@@ -262,7 +255,7 @@ public class FrontController implements Initializable{
     }
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+/*
 //metodo per andare alla schermata del test finale
     @FXML private void goFinale(ActionEvent event){
         try{

@@ -1,4 +1,4 @@
-package Esercizi.Monteventi;
+package Esercizi.Magliarella;
 
 import Esercizi.Front.FrontController;
 import Login.Utente;
@@ -7,12 +7,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class RegoleOrdinamentoCodiceController {
+public class RegoleCosaStampaController {
 
     private Utente utente;
 
@@ -43,8 +41,6 @@ public class RegoleOrdinamentoCodiceController {
     }
     */
     
-
-
     @FXML private void indietroClicked(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Front/front.fxml"));

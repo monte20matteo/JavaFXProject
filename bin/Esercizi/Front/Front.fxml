@@ -16,7 +16,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-
 <StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(217, 216, 216);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../style.css"  fx:controller="Esercizi.Front.FrontController">
     <children>
         <!-- VBox principale con allineamento al centro -->
@@ -28,7 +27,9 @@
                     <Label id="utente" fx:id="nameUser" prefHeight="30.0" prefWidth="260.0" style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Nome Utente" />
                     <!-- Spazio flessibile -->
                     <Region HBox.hgrow="ALWAYS" />
-                    <Label prefHeight="30.0" prefWidth="70.0" style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Profilo" />
+                    <Button style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" id="saveButton" onAction="#salva" text="Salva"/>
+                    <Region prefWidth="30"/>
+                    <Label prefHeight="30.0" prefWidth="60.0" style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Profilo" />
                     <!-- Pulsante per il profilo -->
                     <Button id="profileButton" onAction="#goProfilo">
                         <graphic>
@@ -51,7 +52,7 @@
 
             <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" layoutX="30" layoutY="30" style="-fx-padding: 10px; -fx-background-radius: 10;">
             <children>
-                <Label id="label-esercizi" text="Cosa stampa?"/>
+                <Label id="label-esercizi" text="Cosa stampa" onMouseClicked="#CosaStampaClicked"/>
                 <Label id="difficult" fx:id="diffCS" />
                 <ProgressBar fx:id="CosaStampaBar" prefWidth="200.0" progress="0.0" />
             </children>
@@ -69,9 +70,9 @@
         <!-- VBox in basso a sinistra -->
         <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" layoutX="30" layoutY="220" style="-fx-padding: 10px; -fx-background-radius: 10;">
             <children>
-                <Label id="label-esercizi" text="Confronta codice"/>
-                <Label id="difficult" fx:id="diffCC" />
-                <ProgressBar fx:id="ConfrontaCodiceBar" prefWidth="200.0" progress="0.0" />
+                <Label id="label-esercizi" text="Trova l'errore" onMouseClicked="#TrovaErroreClicked"/>
+                <Label id="difficult" fx:id="diffTE" />
+                <ProgressBar fx:id="TrovaErroreBar" prefWidth="200.0" progress="0.0" />
             </children>
         </VBox>
             

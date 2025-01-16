@@ -1,4 +1,4 @@
-package Esercizi.Monteventi;
+package Esercizi.DiCapua;
 
 import Esercizi.Front.FrontController;
 import Login.Utente;
@@ -12,12 +12,29 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class RegoleOrdinamentoCodiceController {
+import Login.Utente;
 
-    private Utente utente;
+public class RegoleTrovaErroreController {
+
+     private Utente utente;
 
     public void setUtente(Utente utente) {
         this.utente = utente;
+    }
+
+    @FXML private void indietroClicked(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Front/front.fxml"));
+            Parent root = loader.load();
+            FrontController frontController = loader.getController();
+            frontController.setUtente(utente);
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /* 
@@ -42,22 +59,5 @@ public class RegoleOrdinamentoCodiceController {
         }
     }
     */
-    
-
-
-    @FXML private void indietroClicked(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Front/front.fxml"));
-            Parent root = loader.load();
-            FrontController frontController = loader.getController();
-            frontController.setUtente(utente);
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     
 }

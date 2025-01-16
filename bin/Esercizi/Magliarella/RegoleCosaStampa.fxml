@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esercizi.Monteventi.RegoleOrdinamentoCodiceController" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../style.css" style="-fx-background-color: rgb(217, 216, 216);">
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esercizi.Magliarella.RegoleCosaStampaController" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../style.css" style="-fx-background-color: rgb(217, 216, 216);">
    <children>
 
       <!-- VBox principale con allineamento al centro -->
@@ -18,7 +18,7 @@
          <!-- Header con sfondo grigio -->
          <HBox alignment="CENTER" id="headerUp">
             <children>
-               <Label id="regoleTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Benvenuto in 'Ordinamento codice'">
+               <Label id="regoleTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Benvenuto in 'Cosa stampa'">
                   <font>
                      <Font size="30.0" />
                   </font>
@@ -47,8 +47,8 @@
                      <!-- Testo descrittivo -->
                      <VBox spacing="10" style="-fx-alignment: top-left; -fx-padding: 20 0 0 20;">
                         <children>
-                           <Label text="Visualizzerai un numero di segmenti di codice java." style="-fx-text-fill: #000000"/>
-                           <Label text="All'utente è chiesto di ordinarli nella maniera che ritiene più opportuna." style="-fx-text-fill: #000000"/>
+                           <Label text="Visualizzerai una porzione di codice java." style="-fx-text-fill: #000000"/>
+                           <Label text="Inserisci la risposta nell'apposito campo di testo." style="-fx-text-fill: #000000"/>
                            <Label text="Una volta dentro l'esercizio se si esce prima di averlo completato i dati non verranno salvati." style="-fx-text-fill: #000000"/>
                            <Label text="Una volta dentro l'esercizio se si clicca su verifica si otterrà il risultato." style="-fx-text-fill: #000000"/>
                            <Label text="Bisogna completare consecutivamente 3 esercizi per passare alla difficoltà successiva." style="-fx-text-fill: #000000"/>

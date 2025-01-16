@@ -1,10 +1,10 @@
-#loginTitle, #homePageTitle, #registrazioneTitle, #registrazioneTitle2, #profileTitle{
+#loginTitle, #homePageTitle, #registrazioneTitle, #registrazioneTitle2, #profileTitle, #regoleTitle{
     -fx-alignment: center;
     -fx-font-weight: bold;
     -fx-text-fill: #000000;
 }
 
-#labelUsername, #labelPassword, #labelRegistrazione, #labelConfermaPassword, #labelAccesso, #labelHome, #loginTitle2{
+#labelUsername, #labelPassword, #labelRegistrazione, #labelConfermaPassword, #labelAccesso, #labelHome, #loginTitle2, #regoleTitle2{
     -fx-text-fill: #000000;
     -fx-font-weight: bold;
 }
@@ -14,7 +14,7 @@
     -fx-padding: 30;
 }
 
-#avantiButton, #indietroButton, #loginButton, #registrazioneButton, #tornaHomeButton, #profileButton, #logoutButton, #dashboardButton, #visionePasswordButton{
+#saveButton, #avantiButton, #indietroButton, #loginButton, #registrazioneButton, #tornaHomeButton, #profileButton, #logoutButton, #dashboardButton, #visionePasswordButton{
     -fx-background-color: #7e7d7d;
     -fx-text-fill: #000000; 
     -fx-background-radius: 10px; /* Arrotondamento degli angoli */
@@ -25,13 +25,13 @@
 }
 
 /* effetto al passaggio del mouse */
-#avantiButton:hover, #indietroButton:hover, #loginButton:hover, #registrazioneButton:hover, #tornaHomeButton:hover, #profileButton:hover, #logoutButton:hover, #dashboardButton:hover, #visionePasswordButton:hover{
+#saveButton:hover, #avantiButton:hover, #indietroButton:hover, #loginButton:hover, #registrazioneButton:hover, #tornaHomeButton:hover, #profileButton:hover, #logoutButton:hover, #dashboardButton:hover, #visionePasswordButton:hover{
     -fx-background-color: #000000; /* Cambia colore di sfondo */
     -fx-text-fill: #7e7d7d; /* Colore del testo durante l'hover */
 }
 
 /* effetto al clic */
-#avantiButton:pressed, #indietroButton:pressed, #registrazioneButton:pressed, #loginButton:pressed, #tornaHomeButton:pressed, #profileButton:pressed, #logoutButton:pressed, #dashboardButton:pressed, #visionePasswordButton:pressed{
+#saveButton:pressed, #avantiButton:pressed, #indietroButton:pressed, #registrazioneButton:pressed, #loginButton:pressed, #tornaHomeButton:pressed, #profileButton:pressed, #logoutButton:pressed, #dashboardButton:pressed, #visionePasswordButton:pressed{
     -fx-background-color: #7e7d7d;
     -fx-text-fill: #000000;
 }
