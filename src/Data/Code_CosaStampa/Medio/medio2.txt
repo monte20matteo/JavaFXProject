@@ -1,0 +1,8 @@
+public class Main {
+    public static void main(String[] args) {
+        String str = "racecar";
+        String reverse = new StringBuilder(str).reverse().toString();
+        boolean isPalindrome = str.equals(reverse);
+        System.out.println(isPalindrome);
+    }
+}
