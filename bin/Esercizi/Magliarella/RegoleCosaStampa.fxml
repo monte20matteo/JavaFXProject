@@ -11,7 +11,6 @@
 
 <StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esercizi.Magliarella.RegoleCosaStampaController" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../style.css" style="-fx-background-color: rgb(217, 216, 216);">
    <children>
-
       <!-- VBox principale con allineamento al centro -->
       <VBox spacing="20" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
       

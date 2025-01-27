@@ -24,7 +24,7 @@
             <HBox id="headerUp" alignment="CENTER">
                 <children>
                     <!-- Label per il nome utente -->
-                    <Label id="utente" fx:id="nameUser" prefHeight="30.0" prefWidth="260.0" style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Nome Utente" />
+                    <Label id="utente" fx:id="nameUser" prefHeight="30.0" prefWidth="260.0" style="-fx-font-weight: bold; -fx-font-size: 18px;" text="Nome Utente" />
                     <!-- Spazio flessibile -->
                     <Region HBox.hgrow="ALWAYS" />
                     <Button style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" id="saveButton" onAction="#salva" text="Salva"/>

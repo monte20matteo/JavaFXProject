@@ -224,7 +224,7 @@ public class CosaStampaController implements Initializable{
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 String[] elements = line.split(",");
-                if (elements.length >= 10) { // Verifica che ci siano almeno 11 elementi
+                if (elements.length >= 10) { // Verifica che ci siano almeno 10 elementi
                     lines.add(elements); // Aggiungo la riga al set
                 } else {
                     System.out.println("Riga con formato errato: " + line);
@@ -236,10 +236,10 @@ public class CosaStampaController implements Initializable{
             File outputFile = new File("src/Data/users.csv");
             PrintWriter writer = new PrintWriter(new FileWriter(outputFile));
             for (String[] s : lines) {
-                if (s[0].equals(loggedUtente.getUsername()) && s[1].equals(loggedUtente.getPassword())){ // Eseguo il check sull'utente
+                if (s[0].equals(loggedUtente.getUsername()) && s[1].equals(loggedUtente.getPassword())) { // Eseguo il check sull'utente
                     s = loggedUtente.onFile().split(","); // Aggiorno la riga
                 }
-            // Controllo che l'array s abbia almeno 11 elementi prima di accedere agli indici
+            // Controllo che l'array s abbia almeno 10 elementi prima di accedere agli indici
                 if (s.length >= 10) {
                     writer.println(s[0] + "," + s[1] + "," + s[2] + "," + s[3] + "," + s[4] + "," + s[5] + "," + s[6] + "," + s[7] + "," + s[8]+ "," + s[9]+ "," + s[10]);
                 } else {

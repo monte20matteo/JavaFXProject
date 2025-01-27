@@ -20,13 +20,12 @@ public class RegoleOrdinamentoCodiceController {
         this.utente = utente;
     }
 
-    /* 
     @FXML
-    private void IniziaEsercizio(ActionEvent event) {
+    private void avantiClicked(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Catta/OrdinaCodice.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Monteventi/OrdinamentoCodice.fxml"));
             Parent root = loader.load();
-            Esercizi.Catta.OrdinaCodiceController OrdinaCodiceController = loader.getController();
+            Esercizi.Monteventi.OrdinamentoCodiceController OrdinaCodiceController = loader.getController();
             OrdinaCodiceController.setUtente(utente);
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -40,9 +39,7 @@ public class RegoleOrdinamentoCodiceController {
             alert.setContentText("Errore nel caricamento dell'esercizio.");
             alert.showAndWait();
         }
-    }
-    */
-    
+    }    
 
 
     @FXML private void indietroClicked(ActionEvent event) {

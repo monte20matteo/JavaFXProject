@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -49,7 +50,6 @@ public class FrontController implements Initializable{
                 newScene.windowProperty().addListener((obs, oldWindow, newWindow) -> {
                     if (newWindow != null) {
                         showProgress();  // Chiamare showprogress quando la finestra è mostrata
-                        mostraTestFinale(); // chiamato per vedere se l'utente ha completato tutti i test
                     }
                 });
             }
@@ -62,18 +62,6 @@ public class FrontController implements Initializable{
         this.utente = utente;
         nameUser.setText(utente.toString());
     }
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-    //metodo per abilitare il test finale
-    @FXML private void mostraTestFinale(){
-        if(utente.getScore()[0] == 1 && utente.getScore()[1] == 1 && utente.getScore()[2] == 1 && utente.getScore()[3] == 1 && utente.getScore()[4] == 1 && utente.getScore()[5] == 1 && utente.getScore()[6] == 1 && utente.getScore()[7] == 1 && utente.getScore()[8] == 1){
-            buttonTest.setDisable(false);
-        }
-    }
-
-
-
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //metodo per andare alla schermata del profilo
@@ -96,14 +84,22 @@ public class FrontController implements Initializable{
     //metodo per andare alla schermata di cosaStampa rules
     @FXML private void CosaStampaClicked(MouseEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Magliarella/RegoleCosaStampa.fxml"));
-            Parent cosaStampa = loader.load();
-            Esercizi.Magliarella.RegoleCosaStampaController rulesController = loader.getController();
-            rulesController.setUtente(this.utente);
-            Scene cosaStampaScene = new Scene(cosaStampa);
-            Stage stage = (Stage) ((Label) event.getSource()).getScene().getWindow(); //prova
-            stage.setScene(cosaStampaScene);
-            stage.show();
+            if(utente.getScore()[2] >= 1.0){
+                Alert alertFine = new Alert(Alert.AlertType.INFORMATION);
+                alertFine.setTitle("Esercizi completati!");
+                alertFine.setHeaderText("Tipologia di esercizi già completata!");
+                alertFine.setContentText("Hai già completato questa tipologia di esercizi!");
+                alertFine.showAndWait();
+            }else{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Magliarella/RegoleCosaStampa.fxml"));
+                Parent cosaStampa = loader.load();
+                Esercizi.Magliarella.RegoleCosaStampaController rulesController = loader.getController();
+                rulesController.setUtente(this.utente);
+                Scene cosaStampaScene = new Scene(cosaStampa);
+                Stage stage = (Stage) ((Label) event.getSource()).getScene().getWindow(); //prova
+                stage.setScene(cosaStampaScene);
+                stage.show();
+            }
         } catch (Exception e) {
             System.out.println("Verificato un errore nel caricamento della finestra di cosaStampa: --> " + e.getMessage());
             e.printStackTrace();
@@ -114,31 +110,47 @@ public class FrontController implements Initializable{
 //metodo per andare alla schermata di OrdinaCodice 
 @FXML private void OrdinamentoCodiceClicked(MouseEvent event) {
     try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Monteventi/RegoleOrdinamentoCodice.fxml"));
-        Parent root = loader.load();
-        Esercizi.Monteventi.RegoleOrdinamentoCodiceController rulesController = loader.getController();
-        rulesController.setUtente(utente);
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Label) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    } catch (Exception e) {
+        if(utente.getScore()[5] >= 1.0){
+            Alert alertFine = new Alert(Alert.AlertType.INFORMATION);
+            alertFine.setTitle("Esercizi completati!");
+            alertFine.setHeaderText("Tipologia di esercizi già completata!");
+            alertFine.setContentText("Hai già completato questa tipologia di esercizi!");
+            alertFine.showAndWait();
+        }else{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Monteventi/RegoleOrdinamentoCodice.fxml"));
+            Parent root = loader.load();
+            Esercizi.Monteventi.RegoleOrdinamentoCodiceController rulesController = loader.getController();
+            rulesController.setUtente(utente);
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Label) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        }
+    }catch (Exception e) {
         e.printStackTrace();
-    }
+    }  
 }
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //metodo per andare alla schermata di ConfrontaCodice 
 @FXML private void TrovaErroreClicked(MouseEvent event) {
     try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/DiCapua/RegoleTrovaErrore.fxml"));
-        Parent root = loader.load();
-        Esercizi.DiCapua.RegoleTrovaErroreController rulesController = loader.getController();
-        rulesController.setUtente(utente);
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Label) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        if(utente.getScore()[8] >= 1.0){
+            Alert alertFine = new Alert(Alert.AlertType.INFORMATION);
+            alertFine.setTitle("Esercizi completati!");
+            alertFine.setHeaderText("Tipologia di esercizi già completata!");
+            alertFine.setContentText("Hai già completato questa tipologia di esercizi!");
+            alertFine.showAndWait();
+        }else{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/DiCapua/RegoleTrovaErrore.fxml"));
+            Parent root = loader.load();
+            Esercizi.DiCapua.RegoleTrovaErroreController rulesController = loader.getController();
+            rulesController.setUtente(utente);
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Label) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        }
     } catch (Exception e) {
         e.printStackTrace();
     }
@@ -255,24 +267,6 @@ public class FrontController implements Initializable{
     }
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-//metodo per andare alla schermata del test finale
-    @FXML private void goFinale(ActionEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Finale/testFinale.fxml"));
-            Parent root = loader.load();
-            Esercizi.Finale.testFinaleController controller = loader.getController();
-            controller.setUtente(utente);
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        }catch (Exception e){
-            System.out.println("Errore caricamento goFinale: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-*/
 
 }
 
