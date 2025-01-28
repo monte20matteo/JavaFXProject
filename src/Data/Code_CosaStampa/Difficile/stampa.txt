@@ -1,0 +1,60 @@
+Esercizio 1, Ordina L'Array!
+public class Esercizio1 {
+public static void main(String[] args) {
+int[] arr = {64, 34, 25, 12, 22, 11, 90};
+for (int i = 0; i < arr.length - 1; i++) {
+for (int j = 0; j < arr.length - 1 - i; j++) {
+if (arr[j] > arr[j + 1]) {
+int temp = arr[j];
+arr[j] = arr[j + 1];
+arr[j + 1] = temp;}}}
+System.out.println(Arrays.toString(arr));}}
+
+[11,12,22,25,34,64,90]
+Esercizio 2, Gestione conto bancario!
+public class ContoBancario {
+private double saldo;
+public ContoBancario(double saldoIniziale) {
+saldo = saldoIniziale;}
+public void deposita(double importo) {
+saldo += importo;}
+public void preleva(double importo) {
+if (importo <= saldo) {
+saldo -= importo;} else {
+System.out.println("Saldo insufficiente!");}}
+public double getSaldo() {
+return saldo;}
+public static void main(String[] args) {
+ContoBancario conto = new ContoBancario(1000);
+conto.deposita(500);
+conto.preleva(200);
+System.out.println("Saldo finale: " + conto.getSaldo());}}
+
+1300
+Esercizio 3, Gestione delle eccezioni!
+public class Esercizio4 {
+public static void main(String[] args) {
+try {
+int num1 = 10;
+int num2 = 0;
+System.out.println("Risultato: " + (num1 / num2));}
+catch (ArithmeticException e) {
+System.out.println("Errore: divisione per zero!");}
+finally {
+System.out.println("Operazione completata!");}}}
+
+Errore: divisione per zero!
+Esercizio 4, Numero più grande!
+public class Esercizio2 {
+public static void main(String[] args) {
+int num = 54673;
+System.out.println(largestNumber(num));}
+public static int largestNumber(int num) {
+String numStr = Integer.toString(num);
+char[] digits = numStr.toCharArray();
+Arrays.sort(digits);
+StringBuilder sb = new StringBuilder(new String(digits));
+sb.reverse();
+return Integer.parseInt(sb.toString());}}
+
+76543

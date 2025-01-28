@@ -1,34 +1,30 @@
-Calcola il fattoriale di un numero con ricorsione
-public class Fattoriale {
-public static void main(String[] args) {
-int numero = 5;
-int risultato = calcolaFattoriale(numero);
-System.out.println("Il fattoriale di " + numero + " è " + risultato);}
-public static int calcolaFattoriale(int n) {
-if (n == 0)
-return 1;
-else 
-return n * calcolaFattoriale(n - 1);}}
+Sequenza di Fibonacci fino al decimo termine
+public class Fibonacci {  
+public static void main(String[] args) { 
+int n1 = 0, n2 = 1;  
+System.out.println("Sequenza di Fibonacci:"); 
+for (int i = 0; i < 10; i++) {  
+System.out.print(n1 + " ");  
+int nextTerm = n1 + n2;  
+n1 = n2;  
+n2 = nextTerm;}}} 
 
-AJBICHDGEF
-Calcola la somma di numeri da 1 a n con ricorsione
-public class SommaNumeri {
+DIBAFHCEG
+Rimuovi i caratteri duplicati da una stringa
+public class RimuoviDuplicati {
 public static void main(String[] args) {
-int numero = 5;
-int risultato = sommaNumeri(numero);
-System.out.println("La somma dei numeri da 1 a " + numero + " è " + risultato);}
-public static int sommaNumeri(int n) {
-if (n == 1) 
-return 1;
-else 
-return n + sommaNumeri(n - 1);}}
+String str = "programming", risultato = "";
+for (int i = 0; i < str.length(); i++) {
+char c = str.charAt(i);
+if (risultato.indexOf(c) == -1) {
+risultato += c; }}
+System.out.println("Stringa senza duplicati: " + risultato);}}
 
-ACEGIBDFHJ
+HEGFACBD
 Calcola l'MCD di due numeri con ricorsione
 public class MassimoComuneDivisore {
 public static void main(String[] args) {
-int a = 48;
-int b = 18;
+int a = 64, b = 40;
 int risultato = calcolaMCD(a, b);
 System.out.println("Il MCD di " + a + " e " + b + " è " + risultato);}
 public static int calcolaMCD(int a, int b) {
@@ -37,18 +33,16 @@ return a;
 else 
 return calcolaMCD(b, a % b);}}
 
-KABIJDCHGFE
-Calcola la potenza di un numero con ricorsione
-public class CalcolaPotenza {
-public static void main(String[] args) {
-int base = 2;
-int esponente = 3;
-int risultato = calcolaPotenza(base, esponente);
-System.out.println(base + " elevato alla " + esponente + " è " + risultato);}
-public static int calcolaPotenza(int base, int esponente) {
-if (esponente == 0)
-return 1;
-else
-return base * calcolaPotenza(base, esponente - 1);}}
+ABIJDCHGFE
+Calcola la somma dei numeri da 1 a n con ricorsione
+public class SommaRicorsiva {  
+public static void main(String[] args) {  
+int numero = 5;  
+int risultato = somma(numero);  
+System.out.println("La somma dei numeri da 1 a " + numero + " è: " + risultato);  
+public static int somma(int n) {  
+if (n == 1) {  
+return 1; }  
+return n + somma(n - 1); }}}  
 
-ABIJDCHGFEK
+IGHCABEDF

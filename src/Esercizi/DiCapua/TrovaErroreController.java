@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -40,7 +42,7 @@ public class TrovaErroreController implements Initializable {
     @FXML private Label nameUser;
     @FXML private ImageView mostraimage;
     @FXML private TextField answer;
-    @FXML private AnchorPane root;
+    @FXML private StackPane root;
     @FXML private Label difficult;
     @FXML private GridPane spazioCodice;
     @FXML private Label titoloEs;
@@ -110,17 +112,17 @@ public class TrovaErroreController implements Initializable {
         switch (difficolta) { 
             case "Facile":
                 this.difficult.setText("Facile");
-                this.difficult.setStyle("-fx-text-fill: green;");
+                this.difficult.setStyle("-fx-text-fill: green; -fx-font-weight: bold; -fx-font-size: 18px;");
                 break;
 
             case "Medio":
                 this.difficult.setText("Medio");
-                this.difficult.setStyle("-fx-text-fill: yellow;");
+                this.difficult.setStyle("-fx-text-fill: yellow; -fx-font-weight: bold; -fx-font-size: 18px;");
                 break;
         
             default:
                 this.difficult.setText("Difficile");
-                this.difficult.setStyle("-fx-text-fill: red;");
+                this.difficult.setStyle("-fx-text-fill: red; -fx-font-weight: bold; -fx-font-size: 18px;");
                 break;
         }
 

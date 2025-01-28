@@ -1,0 +1,35 @@
+Esercizio 1, Calcolo del Massimo!
+public class Esercizio1 {
+public static void main(String[] args) {
+int a = 8;
+int b = 12;
+int c = 5;
+int max = (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c);
+System.out.println(max);
+}}
+
+12
+Esercizio 2, Conta bene!
+public class Esercizio2 {
+public static void main(String[] args) {
+String parola = "Programmazione";
+System.out.println(parola.length());}}
+
+14
+Esercizio 3, Il ciclo While!
+public class Esercizio3 {
+public static void main(String[] args) {
+int x = 2;
+int y = 4;
+while (x < y) {
+x += 2;}
+System.out.println(x);}}
+
+4
+Esercizio 4, Benvenuto ASCII!
+public class Esercizio4 {
+public static void main(String[] args) {
+char ch = 'A';
+System.out.println(ch + 3);}}
+
+68

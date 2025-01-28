@@ -1,7 +1,0 @@
-public class Main {
-    public static void main(String[] args) {
-        double numero = 0.6;
-        int risultato = (int) numero;
-        System.out.println(risultato);
-    }
-}

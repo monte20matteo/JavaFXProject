@@ -1,42 +1,36 @@
-Verifica se pari o dispari
-public class PariDispari {
-public static void main(String[] args) {
-int numero = 10;
-if (numero % 2 == 0) {
-System.out.println(numero + " è un numero pari.");
-} else {
-System.out.println(numero + " è un numero dispari.");}}}
+Stampa la tabellina del 7
+public class TabellinaDi7 {  
+public static void main(String[] args) {  
+for (int i = 1; i <= 10; i++) {  
+int risultato = 7 * i;  
+System.out.println("7 x " + i + " = " + risultato);}}}
 
-FBGADEC
-Verifica se un numero è positivo, negativo o zero
-public class PositivoNegativo {
-public static void main(String[] args) {
-int numero = -5;
-if (numero > 0) {
-System.out.println(numero + " è un numero positivo.");
-} else if (numero < 0) {
-System.out.println(numero + " è un numero negativo.");
-} else {
-System.out.println(numero + " è zero.");}}}
+AEDCB
+Stampa la somma dei numeri da 1 a 10
+public class SommaNumeri {  
+public static void main(String[] args) {  
+int somma = 0;  
+for (int i = 1; i <= 10; i++) {  
+somma += i;  
+System.out.println("La somma dei numeri da 1 a 10 è: " + somma);}}}
 
-CEFBDGAIJ
-Verifica se un numero è divisibile per 3
-public class DivisibilePerTre {
+CDFABE
+Verifica se un numero è divisibile per 5
+public class DivisibilePerCinque {
 public static void main(String[] args) {
 int numero = 9;
-if (numero % 3 == 0) {
-System.out.println(numero + " è divisibile per 3.");
+if (numero % 5 == 0) {
+System.out.println(numero + " è divisibile per 5");
 } else {
-System.out.println(numero + " non è divisibile per 3.");}}}
+System.out.println(numero + " non è divisibile per 5");}}}
 
 ACEGFDB
-Verifica se un numero è maggiore di 100
-public class MaggioreDiCento {
-public static void main(String[] args) {
-int numero = 150;
-if (numero > 100) {
-System.out.println(numero + " è maggiore di 100.");
-} else {
-System.out.println(numero + " è minore o uguale a 100.");}}}
+Stampa i numeri pari presenti in un array
+public class NumeriPariArray {  
+public static void main(String[] args) {  
+int[] numeri = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};  
+for (int i = 0; i < numeri.length; i++) {  
+if (numeri[i] % 2 == 0)  
+System.out.println(numeri[i] + " è un numero pari.");}}}
 
-BDFGECA
+FACBDE
