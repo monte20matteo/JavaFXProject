@@ -49,7 +49,7 @@
                            <Label text="Visualizzerai una porzione di codice java." style="-fx-text-fill: #000000"/>
                            <Label text="Inserisci la risposta nell'apposito campo di testo." style="-fx-text-fill: #000000"/>
                            <Label text="Una volta dentro l'esercizio se si esce prima di averlo completato i dati non verranno salvati." style="-fx-text-fill: #000000"/>
-                           <Label text="Una volta dentro l'esercizio se si clicca su verifica si otterrà il risultato." style="-fx-text-fill: #000000"/>
+                           <Label text="Una volta dentro l'esercizio se si clicca su avanti si otterrà il risultato." style="-fx-text-fill: #000000"/>
                            <Label text="Bisogna completare consecutivamente 3 esercizi per passare alla difficoltà successiva." style="-fx-text-fill: #000000"/>
                         </children>
                      </VBox>

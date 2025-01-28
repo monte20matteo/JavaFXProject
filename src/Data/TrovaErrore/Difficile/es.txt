@@ -1,0 +1,43 @@
+Esercizio 1:
+1 public class Main {
+2    public static void main(String[] args) {
+3        int x = 5;
+4        int y = 0;
+5        System.out.println("Il risultato è: " + divide(x, y));
+6    }
+7    public static int divide(int a, int b) {
+8        return a / b;
+9    }
+10 }
+
+8
+Esercizio 2:
+1 public class Main {
+2    public static void main(String[] args) {
+3        int[][] matrix = {{1, 2, 3}, {4, 5, 6}};
+4        System.out.println(matrix[2][0]);
+5    }
+6 }
+
+4
+Esercizio 3:
+1 public class Main {
+2   public static void main(String[] args) {
+3        Object obj = "Hello";
+4        Integer number = (Integer) obj;
+5        System.out.println(number);
+6    }
+7 }
+
+4
+Esercizio 4:
+1 public class Main {
+2    public static void main(String[] args) {
+3        int[] array = {1, 2, 3};
+4        for (int i = 0; i <= array.length; i++) {
+5            System.out.println(array[i]);
+6        }
+7    }
+8 }
+
+5

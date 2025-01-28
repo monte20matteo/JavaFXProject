@@ -21,30 +21,13 @@ public class RegoleTrovaErroreController {
     public void setUtente(Utente utente) {
         this.utente = utente;
     }
-
-    @FXML private void indietroClicked(ActionEvent event) {
+    
+    @FXML private void avantiClicked(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Front/front.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TrovaErrore.fxml"));
             Parent root = loader.load();
-            FrontController frontController = loader.getController();
-            frontController.setUtente(utente);
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /* 
-    @FXML
-    private void IniziaEsercizio(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Catta/OrdinaCodice.fxml"));
-            Parent root = loader.load();
-            Esercizi.Catta.OrdinaCodiceController OrdinaCodiceController = loader.getController();
-            OrdinaCodiceController.setUtente(utente);
+            Esercizi.DiCapua.TrovaErroreController TrovaErroreController = loader.getController();
+            TrovaErroreController.setUtente(utente);
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -58,6 +41,19 @@ public class RegoleTrovaErroreController {
             alert.showAndWait();
         }
     }
-    */
-    
+ 
+     @FXML private void indietroClicked(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Front/front.fxml"));
+            Parent root = loader.load();
+            FrontController frontController = loader.getController();
+            frontController.setUtente(utente);
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
