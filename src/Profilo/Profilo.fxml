@@ -9,19 +9,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" 
-           fx:controller="Profilo.ProfiloController" 
-           prefHeight="394.0" 
-           stylesheets="@../style.css" 
-           style="-fx-background-color:rgb(217, 216, 216);">
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="Profilo.ProfiloController" prefHeight="394.0" stylesheets="@../style.css" style="-fx-background-color:rgb(217, 216, 216);">
     <children>
         <!-- VBox che contiene l'header, il contenuto centrale e il footer -->
         <VBox spacing="25" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
+
             <!-- Header in alto -->
             <HBox alignment="CENTER" id="headerUp">
                 <children>
-                    <Label id="profileTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" 
-                           text="Profilo Utente - JavaStart">
+                    <Label id="profileTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Profilo Utente - JavaStart">
                         <font>
                             <Font size="30.0" />
                         </font>
@@ -32,9 +28,10 @@
             <!-- Spazio elastico sopra il contenitore principale -->
             <Region VBox.vgrow="ALWAYS" />
 
-            <!-- Contenitore con sfondo grigio per il contenuto centrale, con allineamento al centro -->
+            <!-- Contenitore con sfondo grigio per il contenuto centrale -->
             <Pane prefWidth="150" prefHeight="250" style="-fx-background-color: #a5a5a5; -fx-padding: 30; -fx-background-radius: 20;" maxWidth="270" maxHeight="500">
                 <children>
+
                     <!-- Contenitore principale centrale centrato dentro il Pane -->
                     <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
                         <children>
@@ -46,16 +43,13 @@
                                 <children>
                                     <Label fx:id="passwordLabel" text="PASSWORD: " style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #000000;" />
                                     <Label fx:id="maskedPasswordLabel" text="********" style="-fx-font-size: 18px; -fx-text-fill: #000000;" />
-                                    <Button id="visionePasswordButton" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" 
-                                            fx:id="togglePasswordButton" text="Vedi" onAction="#VisualizzaPassword" />
+                                    <Button id="visionePasswordButton" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" fx:id="togglePasswordButton" text="Vedi" onAction="#VisualizzaPassword" />
                                 </children>
                             </HBox>
 
                             <!-- Pulsanti per logout e ritorno alla dashboard -->
-                            <Button style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" 
-                                    text="Logout" id="logoutButton" onAction="#logoutClicked" />
-                            <Button style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" 
-                                    text="Torna alla dashboard" id="dashboardButton" onAction="#tornaDashboardClicked" />
+                            <Button style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" text="Logout" id="logoutButton" onAction="#logoutClicked" />
+                            <Button style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" text="Torna alla dashboard" id="dashboardButton" onAction="#tornaDashboardClicked" />
                         </children>
                     </VBox>
                 </children>
@@ -64,7 +58,7 @@
             <!-- Spazio elastico sotto il contenitore principale -->
             <Region VBox.vgrow="ALWAYS" />
 
-            <!-- Footer con sfondo grigio -->
+            <!-- Footer  -->
             <HBox alignment="CENTER" spacing="100" style="-fx-background-color: #a5a5a5; -fx-padding: 10 20;">
                 <children>
                     <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Di Capua - Magliarella - Monteventi">

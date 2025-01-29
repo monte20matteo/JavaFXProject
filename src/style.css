@@ -1,52 +1,108 @@
-#loginTitle, #homePageTitle, #registrazioneTitle, #registrazioneTitle2, #profileTitle, #regoleTitle{
+#loginTitle,
+#homePageTitle,
+#registrazioneTitle,
+#registrazioneTitle2,
+#profileTitle,
+#regoleTitle {
     -fx-alignment: center;
     -fx-font-weight: bold;
     -fx-text-fill: #000000;
 }
 
-#labelUsername, #labelPassword, #labelRegistrazione, #labelConfermaPassword, #labelAccesso, #labelHome, #loginTitle2, #regoleTitle2{
+#labelUsername,
+#labelPassword,
+#labelRegistrazione,
+#labelConfermaPassword,
+#labelAccesso,
+#labelHome,
+#loginTitle2,
+#regoleTitle2 {
     -fx-text-fill: #000000;
     -fx-font-weight: bold;
 }
 
-#headerUp{
+#headerUp {
     -fx-background-color: #a5a5a5;
     -fx-padding: 30;
 }
 
-#fineButton, #saveButton, #avantiButton, #indietroButton, #loginButton, #registrazioneButton, #tornaHomeButton, #profileButton, #logoutButton, #dashboardButton, #visionePasswordButton{
+#fineButton,
+#saveButton,
+#avantiButton,
+#indietroButton,
+#loginButton,
+#registrazioneButton,
+#tornaHomeButton,
+#profileButton,
+#logoutButton,
+#dashboardButton,
+#visionePasswordButton {
     -fx-background-color: #7e7d7d;
-    -fx-text-fill: #000000; 
-    -fx-background-radius: 10px; /* Arrotondamento degli angoli */
+    -fx-text-fill: #000000;
+    -fx-background-radius: 10px;
+    /* Arrotondamento degli angoli */
     -fx-border-radius: 10px;
-    -fx-border-color: #000000; /* Colore del bordo */
-    -fx-border-width: 1px; /* Spessore del bordo */
-    -fx-cursor: hand; /* Cambia il puntatore al passaggio del mouse */
+    -fx-border-color: #000000;
+    /* Colore del bordo */
+    -fx-border-width: 1px;
+    /* Spessore del bordo */
+    -fx-cursor: hand;
+    /* Cambia il puntatore al passaggio del mouse */
 }
 
 /* effetto al passaggio del mouse */
-#fineButton:hover, #saveButton:hover, #avantiButton:hover, #indietroButton:hover, #loginButton:hover, #registrazioneButton:hover, #tornaHomeButton:hover, #profileButton:hover, #logoutButton:hover, #dashboardButton:hover, #visionePasswordButton:hover{
-    -fx-background-color: #000000; /* Cambia colore di sfondo */
-    -fx-text-fill: #7e7d7d; /* Colore del testo durante l'hover */
+#fineButton:hover,
+#saveButton:hover,
+#avantiButton:hover,
+#indietroButton:hover,
+#loginButton:hover,
+#registrazioneButton:hover,
+#tornaHomeButton:hover,
+#profileButton:hover,
+#logoutButton:hover,
+#dashboardButton:hover,
+#visionePasswordButton:hover {
+    -fx-background-color: #000000;
+    /* Cambia colore di sfondo */
+    -fx-text-fill: #7e7d7d;
+    /* Colore del testo durante l'hover */
 }
 
 /* effetto al clic */
-#fineButton:pressed, #saveButton:pressed, #avantiButton:pressed, #indietroButton:pressed, #registrazioneButton:pressed, #loginButton:pressed, #tornaHomeButton:pressed, #profileButton:pressed, #logoutButton:pressed, #dashboardButton:pressed, #visionePasswordButton:pressed{
+#fineButton:pressed,
+#saveButton:pressed,
+#avantiButton:pressed,
+#indietroButton:pressed,
+#registrazioneButton:pressed,
+#loginButton:pressed,
+#tornaHomeButton:pressed,
+#profileButton:pressed,
+#logoutButton:pressed,
+#dashboardButton:pressed,
+#visionePasswordButton:pressed {
     -fx-background-color: #7e7d7d;
     -fx-text-fill: #000000;
 }
 
-#textFieldUsername, #textFieldPassword, #textFieldRisposta{
-    -fx-text-fill: #000000; /* Colore del testo normale */
-    -fx-background-color: #a5a5a5; /* Colore di sfondo */
-    -fx-border-color: #000000; /* Colore del bordo */
+#textFieldUsername,
+#textFieldPassword,
+#textFieldRisposta {
+    -fx-text-fill: #000000;
+    /* Colore del testo normale */
+    -fx-background-color: #a5a5a5;
+    /* Colore di sfondo */
+    -fx-border-color: #000000;
+    /* Colore del bordo */
     -fx-border-width: 1px;
     -fx-border-radius: 5px;
     -fx-prompt-text-fill: #000000;
 }
 
-#textFieldUsername:focused, #textFieldPassword:focused, #textFieldRisposta:focused {
-    -fx-prompt-text-fill: #000000; /* Mantiene il placeholder visibile anche in focus */
+#textFieldUsername:focused,
+#textFieldPassword:focused,
+#textFieldRisposta:focused {
+    -fx-prompt-text-fill: #000000;
+    /* Mantiene il placeholder visibile anche in focus */
 }
 
 /* sfondo solo per la home*/
@@ -57,15 +113,15 @@
     -fx-background-position: center;
 }
 
-#label-esercizi{
+#label-esercizi {
     -fx-alignment: center;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: #000000;
 }
 
-#label-esercizi:hover{
+#label-esercizi:hover {
     -fx-text-fill: #000000;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 15, 0.5, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 15, 0.5, 0, 2);
     -fx-transition: all 0.3s ease-in-out;
 }

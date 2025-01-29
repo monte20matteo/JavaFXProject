@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -33,16 +32,27 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class OrdinamentoCodiceController implements Initializable {
-    @FXML private Label nameUser;
-    @FXML private ImageView mostraimage;
-    @FXML private TextField answer;
-    @FXML private StackPane root;
-    @FXML private Label difficult;
-    @FXML private GridPane spazioCodice;
-    @FXML private Label titoloEs;
-    @FXML private TextField input;
-    
-    private String difficolta; 
+
+    // Dichiarazione degli elementi presenti nel file .fxml tramite il loro fx:id
+    @FXML
+    private Label nameUser;
+    @FXML
+    private ImageView mostraimage;
+    @FXML
+    private TextField answer;
+    @FXML
+    private StackPane root;
+    @FXML
+    private Label difficult;
+    @FXML
+    private GridPane spazioCodice;
+    @FXML
+    private Label titoloEs;
+    @FXML
+    private TextField input;
+
+    // Dichiarazione delle variabili necessarie per il funzionamento del controller
+    private String difficolta;
     private List<String> segmentiCodice;
     private String ordineCorretto;
     private Map<Character, String> lettereSegmentiMap; // Mappa per associare lettere a segmenti di codice
@@ -50,12 +60,11 @@ public class OrdinamentoCodiceController implements Initializable {
     private int IndiceEsercizioCorrente = 0;
 
     // setta l'utente corrente e recupera la difficoltà a cui l'utente era arrivato
-
     public void setUtente(Utente utente) {
         this.loggedUtente = utente;
         nameUser.setText(utente.toString());
         difficolta = getDiffCOrrenteOrdinaCodice(); // Imposta la difficoltà corrente
-        
+
         // Calcola l'indice iniziale in base al punteggio
         double[] score = loggedUtente.getScore();
         int index = -1;
@@ -75,40 +84,33 @@ public class OrdinamentoCodiceController implements Initializable {
             IndiceEsercizioCorrente = (int) (score[index] / 0.25);
         }
     }
-    
 
-    // -----------------------------------------------------------------------------------------------------------------------------------
-
-    @Override public void initialize(URL location, ResourceBundle resources) {
+    // inizializzazione della finestra
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         root.sceneProperty().addListener((observable, oldScene, newScene) -> {
             if (newScene != null) {
                 newScene.windowProperty().addListener((obs, oldWindow, newWindow) -> {
                     if (newWindow != null) {
-                        loadDomanda();  // Chiamare loadDomanda quando la finestra è mostrata
+                        loadDomanda(); // Chiama loadDomanda quando la finestra è mostrata
                     }
                 });
             }
         });
     }
 
-    // -----------------------------------------------------------------------------------------------------------------------------------
-    // metodo principale per caricare la giusta domanda in base alla difficoltà
-
+    // metodo per caricare la domanda in base alla difficoltà
     private void loadDomanda() {
-
-        // switch che serve a mostrare a schermo la giusta difficoltà e con il giusto colore 
-
-        switch (difficolta) { 
+        // switch che serve a mostrare a schermo la giusta difficoltà e con il giusto colore
+        switch (difficolta) {
             case "semplice":
                 this.difficult.setText("Facile");
                 this.difficult.setStyle("-fx-text-fill: green; -fx-font-weight: bold; -fx-font-size: 18px;");
                 break;
-
             case "medio":
                 this.difficult.setText("Medio");
                 this.difficult.setStyle("-fx-text-fill: yellow; -fx-font-weight: bold; -fx-font-size: 18px;");
                 break;
-        
             default:
                 this.difficult.setText("Difficile");
                 this.difficult.setStyle("-fx-text-fill: red; -fx-font-weight: bold; -fx-font-size: 18px;");
@@ -118,6 +120,7 @@ public class OrdinamentoCodiceController implements Initializable {
         // recupera in base a difficolta il giusto file
         String exerciseFilePath = "src/Data/OrdinaCodice/" + difficolta + "/esercizi.txt";
 
+        //lettura
         try (BufferedReader reader = new BufferedReader(new FileReader(exerciseFilePath))) {
             // Salta le righe fino all'indice corrente
             for (int i = 0; i <= IndiceEsercizioCorrente; i++) {
@@ -140,19 +143,18 @@ public class OrdinamentoCodiceController implements Initializable {
                 ordineCorretto = reader.readLine();
 
                 // Associa in maniera univoca le lettere ai segmenti di codice
-                lettereSegmentiMap = new HashMap<>(); // mappa che associa ad ogni lettere maiuscola una stringa
+                lettereSegmentiMap = new HashMap<>(); 
+                // map che associa ad ogni lettera maiuscola una stringa
                 for (int j = 0; j < ordineCorretto.length(); j++) {
                     lettereSegmentiMap.put(ordineCorretto.charAt(j), segmentiCodice.get(j));
                 }
             }
 
             // Ordina i segmenti di codice in ordine alfabetico
-            
-            // lettereSegmentiMap.entrySet() restituisce un set di tutte le coppie chiave-valore 
-            List<Map.Entry<Character, String>> sortedSegments = new ArrayList<>(lettereSegmentiMap.entrySet()); 
-            
-            // sortedSegments.sort(...) ordina la lista sortedSegments in base a un criterio specificato da Comparator
-            // confronta le chiavi Character
+            List<Map.Entry<Character, String>> sortedSegments = new ArrayList<>(lettereSegmentiMap.entrySet());
+            //// lettereSegmentiMap.entrySet() restituisce un set di tutte le coppie chiave-valore
+
+            // sortedSegments.sort() ordina la lista sortedSegments in base a un criterio specificato da Comparator
             // Map.Entry::getKey restituisce la chiave di una Map.Entry
             sortedSegments.sort(Comparator.comparing(Map.Entry::getKey));
 
@@ -162,88 +164,90 @@ public class OrdinamentoCodiceController implements Initializable {
             e.printStackTrace();
         }
     }
-    // -------------------------------------------------------------------------------------------------------------------------------------------------
-    // metodo per mostrare a schermo i segmenti
 
+    // metodo per mostrare a schermo i segmenti di codice
     private void mostraSegmentiCodice(List<Map.Entry<Character, String>> sortedSegments) {
         spazioCodice.getChildren().clear();
-        //Aggiunge il titolo dell'esercizio alla griglia nelle colonne 0 e 1, riga 0, il titolo occupa due colonne.
+        // Aggiunge il titolo dell'esercizio alla griglia nelle colonne 0 e 1, riga 0,
         spazioCodice.add(titoloEs, 0, 0, 2, 1);
 
         int rowIndex = 1;
         for (Map.Entry<Character, String> entry : sortedSegments) {
-            char letter = entry.getKey(); // Estrae la lettera dalla coppia corrente
-            String segment = entry.getValue(); // Estrae il segmento di codice dalla coppia corrente
+            //letter --> lettera dalla coppia corrente
+            char letter = entry.getKey(); 
+            // segmento di codice dalla coppia corrente
+            String segment = entry.getValue(); 
 
-            // crea le label
+            // crea le label e le aggiunge
             Label letterLabel = new Label(String.valueOf(letter));
             Label codeLabel = new Label(segment);
-
-            // aggiunge le label
             spazioCodice.add(letterLabel, 0, rowIndex);
             spazioCodice.add(codeLabel, 1, rowIndex);
+            //incremento della riga
             rowIndex++;
         }
     }
 
-    // -------------------------------------------------------------------------------------------------------------------------------------------------
-    // metodo richiamato quando l'utente clicca sul tasto "Avanti" presente nel file .fxml
-    
-    @FXML private void avanti() {
-        // Controlla se la sequenza di lettere dell'utente è corretta
+    // metodo richiamato quando l'utente clicca sul tasto "Avanti" per controllare la risposta
+    @FXML
+    private void avanti() {
+        // Controlla se la sequenza di lettere dell'utente è corretta --> maiuscole
         String userOrder = input.getText().trim().toUpperCase();
+        //se è l'ordine corretto
         if (userOrder.equals(ordineCorretto)) {
-            // Incrementa l'indice
+            // Incrementa l'indice --> passa all'esercizio successivo
             IndiceEsercizioCorrente++;
-            
+
             // Aggiorna il punteggio nell'array relativo all'utente
             aggiornaPunteggio(difficolta);
-    
+
+            // Mostra un alert per comunicare all'utente che ha completato l'esercizio
             Alert alertGiusto = new Alert(Alert.AlertType.INFORMATION);
             alertGiusto.setTitle("Corretto!");
             alertGiusto.setHeaderText("Hai completato l'esercizio.");
             alertGiusto.setContentText("La risposta è corretta!");
             alertGiusto.showAndWait();
-    
             // Pulisci il campo di testo subito dopo aver mostrato l'alert
             input.clear();
-    
+
             // Se ha completato tutti gli esercizi della modalità difficile
             if (IndiceEsercizioCorrente == 4 && difficolta.equals("difficile")) {
-                // Aggiorna il punteggio finale anche se l'utente ha completato l'ultimo esercizio
-                aggiornaPunteggio(difficolta); // Incrementa il punteggio per l'ultimo esercizio
+                // Aggiorna il punteggio finale
+                aggiornaPunteggio(difficolta);
                 save(); // Salva i progressi dell'utente
-                
+
+                // Mostra un alert per comunicare all'utente che ha completato tutti gli esercizi
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Completato!");
                 alert.setHeaderText("Hai completato tutti gli esercizi nella modalità difficile.");
                 alert.setContentText("Ottimo lavoro! Verrai reindirizzato alla dashboard.");
+
                 // Crea un evento fittizio da passare al metodo tornaDashboard
                 ActionEvent fakeEvent = new ActionEvent();
-
                 // Aggiungi il comportamento al click del pulsante OK dell'alert
                 alert.setOnHidden(e -> tornaDashboard(fakeEvent)); // Passa l'evento fittizio
-
                 // Mostra l'alert
                 alert.showAndWait();
                 return;
             }
-    
+
             // Se non ha completato tutti gli esercizi della modalità difficile
             if (IndiceEsercizioCorrente == 4) {
-                // Aggiorna la difficoltà da cui dipende la scelta dell'esercizio solo dopo aver completato tutti e 4 gli esercizi
+                // Aggiorna la difficoltà da cui dipende la scelta dell'esercizio
                 if (difficolta.equals("semplice")) {
                     difficolta = "medio";
                 } else if (difficolta.equals("medio")) {
                     difficolta = "difficile";
                 }
+                //l'indice riparte da 0 --> primo esercizio della nuova difficoltà
                 IndiceEsercizioCorrente = 0;
             }
-    
+
             // Salva e carica la domanda successiva
             save();
             loadDomanda();
         } else {
+            // altrimenti mostra un alert di errore
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ordine Errato");
             alert.setHeaderText("L'ordine inserito non è corretto.");
@@ -252,13 +256,8 @@ public class OrdinamentoCodiceController implements Initializable {
             input.clear();
         }
     }
-    
-    
-    
-    
-    // -------------------------------------------------------------------------------------------------------------------------------------------------
-    // metodo per il salvataggio
 
+    // metodo per il salvataggio dei progressi dell'utente
     @FXML
     private void save() {
         // Prepara il file per la lettura
@@ -270,7 +269,7 @@ public class OrdinamentoCodiceController implements Initializable {
         }
         // Prepara una lista di righe aggiornate
         List<String> lines = new ArrayList<>();
-    
+
         // Lettura del file riga per riga
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
             String line;
@@ -278,8 +277,9 @@ public class OrdinamentoCodiceController implements Initializable {
                 // Divide la riga in elementi utilizzando la virgola come delimitatore
                 String[] elements = line.split(",");
                 if (elements.length >= 11) {
-                    // Controlla se la riga corrisponde all'utente loggato
-                    if (elements[0].equals(loggedUtente.getUsername()) && elements[1].equals(loggedUtente.getPassword())) {
+                    // Controlla se la riga corrisponde all'utente loggato --> username e password
+                    if (elements[0].equals(loggedUtente.getUsername())
+                            && elements[1].equals(loggedUtente.getPassword())) {
                         // Aggiorna la riga con le informazioni dell'utente loggato
                         elements = loggedUtente.onFile().split(",");
                     }
@@ -294,7 +294,7 @@ public class OrdinamentoCodiceController implements Initializable {
             e.printStackTrace();
             return;
         }
-    
+
         // Prepara il file per la scrittura
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile))) {
             // Scrive ogni riga della lista nel file
@@ -307,21 +307,21 @@ public class OrdinamentoCodiceController implements Initializable {
             e.printStackTrace();
         }
     }
-    
-    
-    // -------------------------------------------------------------------------------------------------------------------------------------------------
-    // metodo richiamato quando l'utente clicca sul pulsante "torna alla dashboard"
 
-    @FXML private void tornaDashboard(ActionEvent event) {
+    // metodo richiamato quando l'utente clicca sul pulsante "torna alla dashboard"
+    @FXML
+    private void tornaDashboard(ActionEvent event) {
         try {
+            // carica la finestra fxml della dashboard --> Front.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Front/Front.fxml"));
             Parent front = loader.load();
+            //ottenere il controller della finestra
             FrontController frontController = loader.getController();
             frontController.setUtente(this.loggedUtente);
+            //crea la scena
             Scene frontScene = new Scene(front);
-    
-            // Invece di castare l'evento a Button, accedi alla finestra direttamente
-            Stage stage = (Stage) root.getScene().getWindow();  // Usa root per ottenere la finestra corrente
+            // Invece di castare l'evento a Button, accedi alla finestra direttamente --> necessario per l'evento fittizio
+            Stage stage = (Stage) root.getScene().getWindow(); // Usa root per ottenere la finestra corrente
             stage.setScene(frontScene);
             stage.show();
         } catch (Exception e) {
@@ -330,26 +330,27 @@ public class OrdinamentoCodiceController implements Initializable {
         }
     }
 
-    // -------------------------------------------------------------------------------------------------------------------------------------------------
-    // Metodo per ottenere la difficoltà corrente dell'utente 
-
+    // Metodo per ottenere la difficoltà corrente dell'utente
     private String getDiffCOrrenteOrdinaCodice() {
+        //array di double che contiene i punteggi dell'utente
         double[] score = loggedUtente.getScore();
-        if (score[3] >= 1.0) { 
-            if (score[4] >= 1.0) { 
-                return "difficile"; // Ritorna "difficile" se entrambi i livelli precedenti sono completati
+        // difficile
+        if (score[3] >= 1.0) {
+            if (score[4] >= 1.0) {
+                return "difficile"; 
             }
-            return "medio"; // Ritorna "medio" se solo il livello "semplice" è completato
+            //medio se solo il semplice è completato
+            return "medio"; 
         }
-        return "semplice"; // Ritorna "semplice" se il livello "semplice" non è ancora completato
+        //"semplice" se il livello "semplice" non è ancora completato
+        return "semplice"; 
     }
 
-    // -------------------------------------------------------------------------------------------------------------------------------------------------
-    // Metodo per aggiornare la difficoltà 
-
+    // Metodo per aggiornare punteggio e la difficoltà
     private void aggiornaPunteggio(String diff) {
         double[] score = loggedUtente.getScore();
         int index = -1;
+        //ogni difficolta ha il suo indice associato
         switch (diff) {
             case "semplice":
                 index = 3;
@@ -361,15 +362,13 @@ public class OrdinamentoCodiceController implements Initializable {
                 index = 5;
                 break;
         }
-    
+
         if (index != -1) {
-            // Invece di limitare il punteggio a 0.75, incrementa sempre di 0.25
-            if(score[index] < 1.0){
+            //incrementa sempre di 0.25
+            if (score[index] < 1.0) {
                 score[index] += 0.25;
             }
         }
     }
-    
 
 }
-

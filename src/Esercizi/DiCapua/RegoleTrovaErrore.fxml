@@ -9,13 +9,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esercizi.DiCapua.RegoleTrovaErroreController" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../style.css" style="-fx-background-color: rgb(217, 216, 216);">
+<!-- StackPane è il contenitore principale che permette di sovrapporre gli elementi -->
+<StackPane xmlns="http://javafx.com/javafx/21"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esercizi.DiCapua.RegoleTrovaErroreController" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../style.css" style="-fx-background-color: rgb(217, 216, 216);">
    <children>
 
       <!-- VBox principale con allineamento al centro -->
       <VBox spacing="20" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
-      
-         <!-- Header con sfondo grigio -->
+
+         <!-- Header -->
          <HBox alignment="CENTER" id="headerUp">
             <children>
                <Label id="regoleTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Benvenuto in 'Trova l'errore'">
@@ -29,7 +31,7 @@
          <!-- Spazio per distanziare gli elementi -->
          <Region VBox.vgrow="ALWAYS" />
 
-         <!-- Contenitore per il contenuto centrale, centrato orizzontalmente -->
+         <!-- Contenitore per il contenuto centrale centrato -->
          <Pane prefWidth="510" prefHeight="320" style="-fx-background-color: #a5a5a5; -fx-padding: 20; -fx-background-radius: 20;" maxWidth="510" maxHeight="500">
             <children>
                <VBox spacing="10" alignment="CENTER">
@@ -37,7 +39,7 @@
                      <!-- Spazio aggiuntivo sopra il titolo -->
                      <Region prefHeight="20" />
 
-                     <!-- Titolo "Regolamento" all'interno del Pane -->
+                     <!-- Titolo all'interno del Pane -->
                      <Label id="regoleTitle2" text="Regolamento" alignment="CENTER">
                         <font>
                            <Font size="24.0" />
@@ -47,8 +49,8 @@
                      <!-- Testo descrittivo -->
                      <VBox spacing="10" style="-fx-alignment: top-left; -fx-padding: 20 0 0 20;">
                         <children>
-                           <Label text="Identificare gli errori indicando il numero di riga dove sono presenti" style="-fx-text-fill: #000000"/>
-                           <Label text="Un esercizio deve essere risolto entro 30 secondi o tornerai alla dashboard" style="-fx-text-fill: #000000"/>
+                           <Label text="Identificare gli errori indicando il numero di riga in cui sono" style="-fx-text-fill: #000000"/>
+                           <Label text="Un esercizio deve essere risolto entro 1 minuto o tornerai alla dashboard" style="-fx-text-fill: #000000"/>
                            <Label text="Una volta dentro l'esercizio se si esce prima di averlo completato i dati non verranno salvati" style="-fx-text-fill: #000000"/>
                            <Label text="Una volta dentro l'esercizio se si clicca su avanti si otterrà il risultato" style="-fx-text-fill: #000000"/>
                            <Label text="Bisogna completare 4 esercizi per passare alla difficoltà successiva" style="-fx-text-fill: #000000"/>
@@ -58,7 +60,6 @@
                      <!-- Pulsanti -->
                      <HBox alignment="CENTER" spacing="20.0">
                         <Button text="Indietro" onAction="#indietroClicked" id="indietroButton" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;"/>
-                        <!-- onAction="#IniziaEsercizio" -->
                         <Button text="Avanti" id="avantiButton" onAction="#avantiClicked" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;"/>
                      </HBox>
                   </children>
@@ -69,7 +70,7 @@
          <!-- Spazio per distanziare gli elementi -->
          <Region VBox.vgrow="ALWAYS" />
 
-         <!-- Footer con sfondo grigio -->
+         <!-- Footer -->
          <HBox alignment="CENTER" spacing="100" style="-fx-background-color: #a5a5a5; -fx-padding: 10 20;">
             <children>
                <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Di Capua - Magliarella - Monteventi">
@@ -77,7 +78,7 @@
                      <Font size="16.0" />
                   </font>
                </Label>
-               <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management - Programmazione intenet">
+               <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management - Programmazione internet">
                   <font>
                      <Font size="16.0" />
                   </font>

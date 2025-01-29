@@ -12,7 +12,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.layout.Region?>
 
-<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esercizi.DiCapua.TrovaErroreController" style="-fx-background-color:rgb(217, 216, 216);" prefWidth="800.0" prefHeight="600.0" stylesheets="@../../style.css">
+<StackPane fx:id="root"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esercizi.DiCapua.TrovaErroreController" style="-fx-background-color:rgb(217, 216, 216);" prefWidth="800.0" prefHeight="600.0" stylesheets="@../../style.css">
     <children>
         <VBox prefHeight="394.0" prefWidth="669.0" alignment="CENTER" spacing="20.0">
             <!-- Header -->
@@ -23,14 +24,14 @@
                 <Region HBox.hgrow="ALWAYS"/>
                 <Button id="saveButton" fx:id="save" onAction="#save" text="Salva" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" />
             </HBox>
-			
+
             <!-- Spazio per separare gli elementi -->
             <Region VBox.vgrow="ALWAYS" />
 
             <!-- Contenitore centrale -->
             <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #a5a5a5; -fx-padding: 30; -fx-background-radius: 20;" maxWidth="800">
                 <children>
-                    <!-- Titolo -->
+                    
                     <Label fx:id="titoloEs" text="Titolo Esercizio" style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-alignment: center;" />
 
                     <!-- Sezione dinamica -->
@@ -38,18 +39,16 @@
                         <padding>
                             <Insets top="20" right="20" bottom="20" left="20" />
                         </padding>
-                        <!-- Segmenti aggiunti dinamicamente -->
                     </GridPane>
 
-                    <!-- Input e bottoni -->
+                    <!-- Input e label -->
                     <VBox alignment="CENTER" spacing="10.0">
-                        <!-- Label e TextField -->
                         <HBox spacing="10.0" alignment="CENTER">
                             <Label style="-fx-font-weight: bold; -fx-text-fill: #000000;" text="Riga con errore:" />
                             <TextField id="textFieldRisposta" fx:id="input" promptText="Inserisci risposta..." />
                         </HBox>
 
-                        <!-- Bottoni -->
+                        <!-- Pulsanti -->
                         <HBox spacing="20.0" alignment="CENTER">
                             <Button id="dashboardButton" text="Torna alla Dashboard" onAction="#tornaDashboard" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" />
                             <Button id="avantiButton" text="Avanti" onAction="#avanti" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" />
@@ -69,7 +68,7 @@
                             <Font size="16.0" />
                         </font>
                     </Label>
-                    <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management - Programmazione intenet">
+                    <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management - Programmazione internet">
                         <font>
                             <Font size="16.0" />
                         </font>

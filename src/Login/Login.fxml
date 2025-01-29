@@ -13,13 +13,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<StackPane fx:id="loginPage" style="-fx-background-color:rgb(217, 216, 216);" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginController">
+<StackPane fx:id="loginPage" style="-fx-background-color:rgb(217, 216, 216);" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="669.0" stylesheets="@../style.css"
+   xmlns="http://javafx.com/javafx/23"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginController">
    <children>
 
       <!-- VBox principale con allineamento al centro -->
       <VBox spacing="25" prefHeight="394.0" prefWidth="669.0" alignment="CENTER">
-      
-         <!-- Header con sfondo grigio -->
+
+         <!-- Header -->
          <HBox alignment="CENTER" id="headerUp">
             <children>
                <Label id="loginTitle" fx:id="target" alignment="CENTER" contentDisplay="CENTER" text="Login - JavaStart">
@@ -33,14 +35,15 @@
          <!-- Spazio per distanziare gli elementi -->
          <Region VBox.vgrow="ALWAYS" />
 
-         <!-- Contenitore per il contenuto centrale, centrato orizzontalmente -->
+         <!-- Contenitore per il contenuto centrale -->
          <Pane prefWidth="550" prefHeight="420" style="-fx-background-color: #a5a5a5; -fx-padding: 30; -fx-background-radius: 20;" maxWidth="550" maxHeight="500">
             <children>
-               <!-- Main Content: i campi di input -->
+               <!-- campi di input -->
                <VBox spacing="10" alignment="CENTER">
                   <children>
                      <!-- Spazio aggiuntivo prima del titolo "Benvenuto" -->
-                     <Region prefHeight="30" /> <!-- Aggiunto spazio tra il titolo e il lato superiore del Pane -->
+                     <Region prefHeight="30" />
+                     <!-- Aggiunto spazio tra il titolo e il lato superiore del Pane -->
 
                      <!-- Titolo sopra al primo campo -->
                      <Label id="loginTitle2" text="Bentornato" alignment="CENTER">
@@ -49,7 +52,7 @@
                         </font>
                      </Label>
 
-                     <!-- Username Row -->
+                     <!-- Username Row con textfield -->
                      <HBox alignment="CENTER" style="-fx-padding: 0 0 0 30;">
                         <Label id="labelUsername" text="Username" minWidth="150">
                            <font>
@@ -58,8 +61,8 @@
                         </Label>
                         <TextField id="textFieldUsername" fx:id="tfUsername" promptText="Inserisci username..." prefWidth="350.0" maxWidth="350.0" style="-fx-font-size: 18px; -fx-padding: 5 10;"/>
                      </HBox>
-                     
-                     <!-- Password Row -->
+
+                     <!-- Password Row con passwordfield -->
                      <HBox alignment="CENTER" style="-fx-padding: 0 0 0 30;">
                         <Label id="labelPassword" text="Password" minWidth="150">
                            <font>
@@ -69,12 +72,13 @@
                         <PasswordField id="textFieldPassword" fx:id="tfPassword" promptText="Inserisci password..." prefWidth="350.0" maxWidth="350.0" style="-fx-font-size: 18px; -fx-padding: 5 10;"/>
                      </HBox>
 
-                     <!-- Buttons Column -->
+                     <!-- Pulsanti  -->
                      <VBox alignment="CENTER" spacing="15">
                         <children>
                            <Button id="loginButton" alignment="CENTER" contentDisplay="CENTER" onAction="#accediClicked" text="Accedi" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;">
                            </Button>
 
+                           <!-- Spazio aggiuntivo tra i pulsanti -->
                            <Region prefHeight="10" />
 
                            <HBox alignment="CENTER" spacing="10">
@@ -85,6 +89,7 @@
                               </children>
                            </HBox>
 
+                           <!-- Pulsante personalizzato con immagine icona home -->
                            <HBox alignment="CENTER" spacing="10">
                               <children>
                                  <Label id="labelHome" text="Torna alla home" style="-fx-font-size: 16px;"/>
@@ -109,7 +114,7 @@
          <!-- Spazio per distanziare gli elementi -->
          <Region VBox.vgrow="ALWAYS" />
 
-         <!-- Footer con sfondo grigio -->
+         <!-- Footer -->
          <HBox alignment="CENTER" spacing="100" style="-fx-background-color: #a5a5a5; -fx-padding: 10 20;">
             <children>
                <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Di Capua - Magliarella - Monteventi">
@@ -117,7 +122,7 @@
                      <Font size="16.0" />
                   </font>
                </Label>
-               <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management - Programmazione intenet">
+               <Label style="-fx-text-fill: #000000; -fx-font-weight: bold;" alignment="CENTER" contentDisplay="CENTER" text="Università di Bologna - Informatica per il management - Programmazione internet">
                   <font>
                      <Font size="16.0" />
                   </font>
