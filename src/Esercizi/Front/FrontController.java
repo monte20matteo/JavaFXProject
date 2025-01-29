@@ -37,7 +37,7 @@ public class FrontController implements Initializable{
     @FXML private ProgressBar OrdinaCodiceBar;
     @FXML private ProgressBar TrovaErroreBar;
     @FXML private Pane root;
-    @FXML private Button buttonTest;
+    @FXML private Button buttonFine;
     private Utente utente;
 
    
@@ -50,6 +50,7 @@ public class FrontController implements Initializable{
                 newScene.windowProperty().addListener((obs, oldWindow, newWindow) -> {
                     if (newWindow != null) {
                         showProgress();  // Chiamare showprogress quando la finestra è mostrata
+                        fineEsercitazione();
                     }
                 });
             }
@@ -153,6 +154,13 @@ public class FrontController implements Initializable{
         }
     } catch (Exception e) {
         e.printStackTrace();
+    }
+}
+
+//metodo per abilitare il button di fine esercitazione
+@FXML private void fineEsercitazione(){
+    if(utente.getScore()[0] == 1 && utente.getScore()[1] == 1 && utente.getScore()[2] == 1 && utente.getScore()[3] == 1 && utente.getScore()[4] == 1 && utente.getScore()[5] == 1 && utente.getScore()[6] == 1 && utente.getScore()[7] == 1 && utente.getScore()[8] == 1){
+        buttonFine.setDisable(false);
     }
 }
 
@@ -267,6 +275,41 @@ public class FrontController implements Initializable{
     }
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    @FXML private void fineTest(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Conclusione esercizi!");
+                alert.setHeaderText("Hai completato tutti gli esercizi di ogni tipologia.");
+                alert.setContentText("Ottimo lavoro! Verrai reindirizzato alla home.");
+
+                // Aggiungi il comportamento al click del pulsante OK dell'alert
+                alert.setOnHidden(e -> tornaHome(event)); // Passa l'evento fittizio
+    
+                // Mostra l'alert e gestisci la risposta dell'utente
+                alert.showAndWait();
+    }
+
+@FXML
+    void tornaHome(ActionEvent event) {
+        try {
+            Parent home = FXMLLoader.load(getClass().getResource("/Home.fxml"));
+            Scene homeScene = new Scene(home);
+            Stage primaryStage = (Stage) nameUser.getScene().getWindow();
+
+            // Cambia scena
+            primaryStage.setScene(homeScene);
+
+            // Forza la finestra ad avere dimensioni massimizzate
+            primaryStage.setMaximized(true); // Abilita la modalità massimizzata
+            primaryStage.setWidth(javafx.stage.Screen.getPrimary().getBounds().getWidth()); // Imposta la larghezza massima
+            primaryStage.setHeight(javafx.stage.Screen.getPrimary().getBounds().getHeight()); // Imposta l'altezza massima
+
+            primaryStage.show();
+        } catch (Exception e) {
+            System.out.println("Errore durante il caricamento della schermata home: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
 }
 

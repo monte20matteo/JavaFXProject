@@ -1,4 +1,4 @@
-Esercizio 1, Ciao mondo!
+Esercizio 1
 public class Esercizio1 {
 public static void main(String[] args) {
 String a = "Hello";
@@ -6,7 +6,7 @@ String b = "World";
 System.out.println(a + " " + b + "!");}}
 
 Hello World!
-Esercizio 2,La Matematica con Java!
+Esercizio 2
 public class Esercizio2 {
 public static void main(String[] args) {
 int x = 10;
@@ -14,7 +14,7 @@ int y = 3;
 System.out.println("Risultato: " + (x / y));}}
 
 3
-Esercizio 3,Occhio alle priorità!
+Esercizio 3
 public class Esercizio3 {
 public static void main(String[] args) {
 int a = 5;
@@ -23,7 +23,7 @@ int c = 2;
 System.out.println(a + b * c);}}
 
 25
-Esercizio 4,Valori Booleani!
+Esercizio 4
 public class Esercizio4 {
 public static void main(String[] args) {
 int x = 7;

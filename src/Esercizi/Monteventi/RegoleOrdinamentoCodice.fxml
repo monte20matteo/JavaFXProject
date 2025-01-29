@@ -47,11 +47,11 @@
                      <!-- Testo descrittivo -->
                      <VBox spacing="10" style="-fx-alignment: top-left; -fx-padding: 20 0 0 20;">
                         <children>
-                           <Label text="Visualizzerai un numero di segmenti di codice java." style="-fx-text-fill: #000000"/>
-                           <Label text="All'utente è chiesto di ordinarli nella maniera che ritiene più opportuna." style="-fx-text-fill: #000000"/>
-                           <Label text="Una volta dentro l'esercizio se si esce prima di averlo completato i dati non verranno salvati." style="-fx-text-fill: #000000"/>
-                           <Label text="Una volta dentro l'esercizio se si clicca su avanti si otterrà il risultato." style="-fx-text-fill: #000000"/>
-                           <Label text="Bisogna completare 4 esercizi per passare alla difficoltà successiva." style="-fx-text-fill: #000000"/>
+                           <Label text="Visualizzerai un numero di segmenti di codice java" style="-fx-text-fill: #000000"/>
+                           <Label text="All'utente è chiesto di ordinarli nella maniera che ritiene più opportuna" style="-fx-text-fill: #000000"/>
+                           <Label text="Una volta dentro l'esercizio se si esce prima di averlo completato i dati non verranno salvati" style="-fx-text-fill: #000000"/>
+                           <Label text="Una volta dentro l'esercizio se si clicca su avanti si otterrà il risultato" style="-fx-text-fill: #000000"/>
+                           <Label text="Bisogna completare 4 esercizi per passare alla difficoltà successiva" style="-fx-text-fill: #000000"/>
                         </children>
                      </VBox>
 

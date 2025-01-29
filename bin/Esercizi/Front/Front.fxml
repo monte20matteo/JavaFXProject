@@ -75,6 +75,9 @@
                 <ProgressBar fx:id="TrovaErroreBar" prefWidth="200.0" progress="0.0" />
             </children>
         </VBox>
+
+        <Button fx:id="buttonFine" text="Fine" onAction="#fineTest" layoutX="580" layoutY="330" style="-fx-font-size: 16px; -fx-padding: 8 8; -fx-font-weight: bold;" id="fineButton" disable="true"/>
+
             
             </children>
         </Pane>

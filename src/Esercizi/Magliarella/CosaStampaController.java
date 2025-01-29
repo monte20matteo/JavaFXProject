@@ -1,63 +1,89 @@
 package Esercizi.Magliarella;
 
+// tutti gli import per il funzionamento del controller
+
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Optional;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import Esercizi.Front.FrontController;
-
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.InputStream;
-import java.io.PrintWriter;
-
 import Login.Utente;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-//import javafx.scene.image.Image;
-//import javafx.scene.image.ImageView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class CosaStampaController implements Initializable{
+public class CosaStampaController implements Initializable {
     @FXML private Label nameUser;
-    //@FXML private ImageView mostraimage;
-    @FXML private TextArea codeTextArea;
+    @FXML private ImageView mostraimage;
     @FXML private TextField answer;
-    @FXML private AnchorPane root; 
+    @FXML private StackPane root;
     @FXML private Label difficult;
+    @FXML private GridPane spazioCodice;
+    @FXML private Label titoloEs;
+    @FXML private TextField input;
 
+    private boolean isOnDashboard = false; // Variabile di stato per tracciare se sei sulla dashboard
+    private String difficolta; 
+    private List<String> segmentiCodice;
+    private String Stampa;
     private Utente loggedUtente;
+    private int IndiceEsercizioCorrente = 0;
 
-    private String rightAnswer;
-
-    //metodo per settare l'utente
-    public void setUtente(Utente utente){
+    // setta l'utente corrente e recupera la difficoltà a cui l'utente era arrivato
+    public void setUtente(Utente utente) {
         this.loggedUtente = utente;
         nameUser.setText(utente.toString());
+        difficolta = getDiffCOrrenteCosaStampa(); // Imposta la difficoltà corrente
+        
+        // Calcola l'indice iniziale in base al punteggio
+        double[] score = loggedUtente.getScore();
+        int index = -1;
+        switch (difficolta) {
+            case "Semplice":
+                index = 0;
+                break;
+            case "Medio":
+                index = 1;
+                break;
+            case "Difficile":
+                index = 2;
+                break;
+        }
+        if (index != -1) {
+            // Ogni esercizio completato incrementa il punteggio di 0.25
+            IndiceEsercizioCorrente = (int) (score[index] / 0.25);
+        }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-        // Aggiungi un listener alla scena per chiamare loadDomanda quando la finestra viene mostrata
+    // -----------------------------------------------------------------------------------------------------------------------------------
+
+    @Override public void initialize(URL location, ResourceBundle resources) {
         root.sceneProperty().addListener((observable, oldScene, newScene) -> {
             if (newScene != null) {
                 newScene.windowProperty().addListener((obs, oldWindow, newWindow) -> {
@@ -69,206 +95,273 @@ public class CosaStampaController implements Initializable{
         });
     }
 
+    // -----------------------------------------------------------------------------------------------------------------------------------
+    // metodo principale per caricare la giusta domanda in base alla difficoltà
 
-
-    //metodo per caricare la domanda
-    @FXML private void loadDomanda(){
-        //Pulisco sia la textArea che il campo di risposta
-        codeTextArea.clear();
-        answer.clear();
-        //determino che difficoltà devo caricare
-        double[] score = this.loggedUtente.getScore();
-        int k = 0; // può assumetere 0 facile, 1 medio, 2 difficile
-        while(k < 3){
-            if((int)score[k] == 0){
-                break;
-            }
-            k++;
-        }
-        //carico le domande della difficoltà k
-
-        try{
-            InputStream stream; // stream per leggere il file
-            switch (k) { // scanner che legge da file delle domande della giusta difficoltà
-                case 0:
-                    stream= getClass().getResourceAsStream("/Data/Code_CosaStampa/semplice/domande.txt");
-                    this.difficult.setText("Facile");
-                    this.difficult.setStyle("-fx-text-fill: green;");
-                    break;
-
-                case 1:
-                    stream= getClass().getResourceAsStream("/Data/Code_CosaStampa/medio/domande.txt");
-                    this.difficult.setText("Medio");
-                    this.difficult.setStyle("-fx-text-fill: yellow;");
-                    break;
-            
-                default:
-                    stream= getClass().getResourceAsStream("/Data/Code_CosaStampa/difficile/domande.txt");
-                    this.difficult.setText("Difficile");
-                    this.difficult.setStyle("-fx-text-fill: red;");
-                    break;
-            }
-            Scanner scanner = new Scanner(stream); // scanner che legge da file delle domande della giusta difficoltà
-            HashMap<String, String> domande = new HashMap<>(); // mappa per le domande
-            while(scanner.hasNextLine()) { // leggo le domande e le metto nella mappa
-                String lineString = scanner.nextLine(); // leggo la riga
-                String[] line = lineString.split(","); // divido la riga in domanda e risposta
-                domande.put(line[0], line[1]); // metto la domanda e la risposta nella mappa
-            }
-            scanner.close();
-            
-            int random = (int)(Math.random() * domande.size()); // genero un numero casuale
-            Iterator<String> Iterator = domande.keySet().iterator(); // iterator per le chiavi
-            int i = 0; // contatore
-            String key = ""; // chiave
-            while(Iterator.hasNext()){ // scorro le chiavi
-                key = Iterator.next(); // prendo la chiave
-                if(i == random){ // se il contatore è uguale al numero casuale
-                    this.rightAnswer = domande.get(key); // prendo la risposta corretta
-                    break; // esco dal ciclo
-                }
-                i++; // incremento il contatore
-            }
-            File file = new File("src/Data/Code_CosaStampa/"+key); // file con il codice
-            scanner = new Scanner(file); // scanner per il file
-            String code = ""; // stringa per il codice
-            while(scanner.hasNextLine()){ // leggo il codice
-                code += scanner.nextLine() + "\n"; // aggiungo la riga alla stringa
-            } 
-            scanner.close();
-            if (score[2] == 1) { // Verifica se il livello "difficile" è completato
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION); // Alert per la fine del gioco
-                alert.setTitle("Complimenti hai completato il livello difficile!"); // Titolo dell'alert
-                alert.setHeaderText("Fine di CosaStampa!"); // Testo dell'alert
-                alert.setContentText("Ora puoi tornare al menu principale, ricordati di salvare i progressi!");
-                Optional<ButtonType> result = alert.showAndWait(); // Mostra l'alert e aspetta la risposta
-                if (result.isPresent() && result.get() == ButtonType.OK){ // Verifica se l'utente ha cliccato su OK
-                    // Procedi con l'azione
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Front/Front.fxml"));
-                    try{
-                        Parent root = loader.load();
-                        FrontController frontController = loader.getController();
-                        frontController.setUtente(loggedUtente);
-                        Scene scene = new Scene(root);
-                        Stage stage = (Stage) this.root.getScene().getWindow(); //prova
-                        stage.setScene(scene);
-                        stage.show();
-                    }catch(Exception e){
-                        System.out.println("Errore in caricamento front da cosastampa: "+e.getMessage());
-                        e.printStackTrace();
-                    }
-                }
+    private void loadDomanda() {
+        // Reset dello stato quando carichi una nuova domanda
+        isOnDashboard = false;
     
-            }else
-                typeWriteEffect(code, codeTextArea, 50); // effetto di scrittura del codice
-        }catch(Exception e){
-            System.out.println("Errore: "+e.getMessage());
-        }
-    }
+        // switch che serve a mostrare a schermo la giusta difficoltà e con il giusto colore 
 
-    //metodo per l'effetto di scrittura del codice
-    private void typeWriteEffect(String code, TextArea textArea, int typingSpeed){
-        final int[] indx = {0}; // indice per la scrittura del codice
-        Timeline timeline = new Timeline(); // timeline per l'effetto di scrittura
-        timeline.getKeyFrames().add(new KeyFrame( // keyframe per l'effetto di scrittura
-            Duration.millis(typingSpeed), // durata del keyframe
-            event -> { // evento del keyframe
-                if (indx[0] < code.length()) { // se l'indice è minore della lunghezza del codice
-                    textArea.appendText(String.valueOf(code.charAt(indx[0]++))); // aggiungo il carattere alla textArea
-                }
-            }));
-            timeline.setCycleCount(code.length()); // setto il numero di cicli
-            timeline.play(); // faccio partire la timeline
-    }
+        switch (difficolta) { 
+            case "Semplice":
+                this.difficult.setText("Semplice");
+                this.difficult.setStyle("-fx-text-fill: green; -fx-font-weight: bold; -fx-font-size: 18px;");
+                break;
 
-    //metodo per controllare la risposta
-    @FXML private void checkAnswer(ActionEvent event){
-        String rispostaUtente = answer.getText(); // estrapolo la risposta dell'utente
-        if(rispostaUtente.equals(rightAnswer)){ // controllo se la risposta è corretta
-            //caso in cui sia corretta
-            //Incremento il punteggio della difficoltà corrente
-            double[] score = loggedUtente.getScore();
-            for(int i = 0; i < 3; i++){
-                if ((int)score[i] == 0) {
-                    loggedUtente.setScore(i); // incremento il punteggio della prima occorrenza con 0
-                    break; // esco dal ciclo
-                }
-            }
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Corretto!");
-            alert.setContentText("La risposta è corretta!");
-            alert.showAndWait();
-            loadDomanda(); // carico una nuova domanda
-        } else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Sbagliato!");
-            alert.setContentText("La risposta è sbagliata, riprova!");
-            alert.showAndWait();
-            answer.clear();
-            
-        }
+            case "Medio":
+                this.difficult.setText("Medio");
+                this.difficult.setStyle("-fx-text-fill: yellow; -fx-font-weight: bold; -fx-font-size: 18px;");
+                break;
         
+            default:
+                this.difficult.setText("Difficile");
+                this.difficult.setStyle("-fx-text-fill: red; -fx-font-weight: bold; -fx-font-size: 18px;");
+                break;
+        }
+
+        // recupera in base a difficolta il giusto file
+        String exerciseFilePath = "src/Data/Code_CosaStampa/" + difficolta + "/stampa.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(exerciseFilePath))) {
+            // Salta le righe fino all'indice corrente
+            for (int i = 0; i <= IndiceEsercizioCorrente; i++) {
+                // Leggi il titolo dell'esercizio (prima riga)
+                String title = reader.readLine();
+                if (title == null) {
+                    return; // Se non ci sono più righe da leggere, esci
+                }
+                titoloEs.setText(title);
+
+                // Leggi i segmenti di codice fino a trovare la riga vuota
+                segmentiCodice = new ArrayList<>();
+                String line;
+                while ((line = reader.readLine()) != null && !line.isEmpty()) {
+                    segmentiCodice.add(line);
+                }
+
+                // Recupera dal file di testo la riga dell'errore
+                Stampa = reader.readLine();
+            }
+
+            // Mostra i segmenti di codice a video
+            mostraSegmentiCodice(segmentiCodice);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
- 
-    //metodo per salvare i progressi
-    @FXML private void save(ActionEvent event) {
-        try {
-            File inputFile = new File("src/Data/users.csv");
-            if (!inputFile.exists()) {
-                System.out.println("Errore: il file di input non esiste.");
+    // -------------------------------------------------------------------------------------------------------------------------------------------------
+    // metodo per mostrare a schermo i segmenti
+
+    private void mostraSegmentiCodice(List<String> segmentiCodice) {
+        // Pulisce la griglia
+        spazioCodice.getChildren().clear();
+
+        // Aggiunge il titolo dell'esercizio in alto
+        Label titoloLabel = new Label(titoloEs.getText());
+        titoloLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+
+        // Mostra ogni segmento di codice come una nuova riga nella griglia
+        int rowIndex = 1;
+        for (String segmento : segmentiCodice) {
+            Label codiceLabel = new Label(segmento);
+            codiceLabel.setStyle("-fx-font-family: monospace; -fx-font-size: 14px;");
+            spazioCodice.add(codiceLabel, 0, rowIndex);
+            rowIndex++;
+        }
+    }
+
+    // -------------------------------------------------------------------------------------------------------------------------------------------------
+    // metodo richiamato quando l'utente clicca sul tasto "Avanti" presente nel file .fxml
+    
+    @FXML private void avanti() {
+        // Controlla se la sequenza di lettere dell'utente è corretta
+        String riga = input.getText();
+        if (riga.equals(Stampa)) {
+            // Incrementa l'indice
+            IndiceEsercizioCorrente++;
+            
+            // Aggiorna il punteggio nell'array relativo all'utente
+            aggiornaPunteggio(difficolta);
+    
+            Alert alertGiusto = new Alert(Alert.AlertType.INFORMATION);
+            alertGiusto.setTitle("Corretto!");
+            alertGiusto.setHeaderText("Hai completato l'esercizio.");
+            alertGiusto.setContentText("La risposta è corretta!");
+            alertGiusto.showAndWait();
+    
+            // Pulisci il campo di testo subito dopo aver mostrato l'alert
+            input.clear();
+    
+            // Se ha completato tutti gli esercizi della modalità difficile
+            if (IndiceEsercizioCorrente == 4 && difficolta.equals("Difficile")) {
+                // Aggiorna il punteggio finale anche se l'utente ha completato l'ultimo esercizio
+                aggiornaPunteggio(difficolta); // Incrementa il punteggio per l'ultimo esercizio
+                save(); // Salva i progressi dell'utente
+                
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Completato!");
+                alert.setHeaderText("Hai completato tutti gli esercizi nella modalità difficile.");
+                alert.setContentText("Ottimo lavoro! Verrai reindirizzato alla dashboard.");
+
+                // Crea un evento fittizio da passare al metodo tornaDashboard
+                ActionEvent fakeEvent = new ActionEvent();
+
+                // Aggiungi il comportamento al click del pulsante OK dell'alert
+                alert.setOnHidden(e -> tornaDashboard(fakeEvent)); // Passa l'evento fittizio
+    
+                // Mostra l'alert e gestisci la risposta dell'utente
+                alert.showAndWait();
                 return;
             }
+    
+            // Se non ha completato tutti gli esercizi della modalità difficile
+            if (IndiceEsercizioCorrente == 4) {
+                // Aggiorna la difficoltà da cui dipende la scelta dell'esercizio solo dopo aver completato tutti e 4 gli esercizi
+                if (difficolta.equals("Semplice")) {
+                    difficolta = "Medio";
+                } else if (difficolta.equals("Medio")) {
+                    difficolta = "Difficile";
+                }
+                IndiceEsercizioCorrente = 0;
+            }
+    
+            // Salva e carica la domanda successiva
+            save();
+            loadDomanda();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Stampa errata");
+            alert.setHeaderText("La stampa inserita non è corretta.");
+            alert.setContentText("Riprova!");
+            alert.showAndWait();
+            input.clear();
+        }
+    }
+    
+    
+    
+    
+    // -------------------------------------------------------------------------------------------------------------------------------------------------
+    // metodo per il salvataggio
 
-            Scanner scan = new Scanner(inputFile);
-            Set<String[]> lines = new HashSet<>();
-            while (scan.hasNextLine()) {
-                String line = scan.nextLine();
+    @FXML
+    private void save() {
+        // Prepara il file per la lettura
+        File inputFile = new File("src/Data/users.csv");
+        if (!inputFile.exists()) {
+            // Controlla se il file di input esiste
+            System.out.println("Errore: il file di input non esiste.");
+            return;
+        }
+        // Prepara una lista di righe aggiornate
+        List<String> lines = new ArrayList<>();
+    
+        // Lettura del file riga per riga
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Divide la riga in elementi utilizzando la virgola come delimitatore
                 String[] elements = line.split(",");
-                if (elements.length >= 10) { // Verifica che ci siano almeno 10 elementi
-                    lines.add(elements); // Aggiungo la riga al set
+                if (elements.length >= 11) {
+                    // Controlla se la riga corrisponde all'utente loggato
+                    if (elements[0].equals(loggedUtente.getUsername()) && elements[1].equals(loggedUtente.getPassword())) {
+                        // Aggiorna la riga con le informazioni dell'utente loggato
+                        elements = loggedUtente.onFile().split(",");
+                    }
+                    // Aggiunge la riga aggiornata o originale alla lista
+                    lines.add(String.join(",", elements));
                 } else {
                     System.out.println("Riga con formato errato: " + line);
                 }
             }
-            scan.close();
-
-        // Ora lavoro sul set
-            File outputFile = new File("src/Data/users.csv");
-            PrintWriter writer = new PrintWriter(new FileWriter(outputFile));
-            for (String[] s : lines) {
-                if (s[0].equals(loggedUtente.getUsername()) && s[1].equals(loggedUtente.getPassword())) { // Eseguo il check sull'utente
-                    s = loggedUtente.onFile().split(","); // Aggiorno la riga
-                }
-            // Controllo che l'array s abbia almeno 10 elementi prima di accedere agli indici
-                if (s.length >= 10) {
-                    writer.println(s[0] + "," + s[1] + "," + s[2] + "," + s[3] + "," + s[4] + "," + s[5] + "," + s[6] + "," + s[7] + "," + s[8]+ "," + s[9]+ "," + s[10]);
-                } else {
-                    System.out.println("Riga con formato errato dopo aggiornamento: " + String.join(",", s));
-                }
-             }
-            writer.close();
-
-        } catch (Exception e) {
+        } catch (IOException e) {
+            System.out.println("Errore in save: " + e.getMessage());
+            e.printStackTrace();
+            return;
+        }
+    
+        // Prepara il file per la scrittura
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile))) {
+            // Scrive ogni riga della lista nel file
+            for (String s : lines) {
+                writer.write(s);
+                writer.newLine();
+            }
+        } catch (IOException e) {
             System.out.println("Errore in save: " + e.getMessage());
             e.printStackTrace();
         }
     }
+    
+    
+   
+    // -------------------------------------------------------------------------------------------------------------------------------------------------
+    // metodo richiamato quando l'utente clicca sul pulsante "torna alla dashboard"
 
-    @FXML private void back(ActionEvent event){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Front/Front.fxml"));
-            Parent front = loader.load();
-            FrontController frontController = loader.getController();
-            frontController.setUtente(this.loggedUtente);
-            Scene frontScene = new Scene(front);
-            Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow(); //prova
-            stage.setScene(frontScene);
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("Verificato un errore nel caricamento della finestra di cosaStampa: --> " + e.getMessage());
-            e.printStackTrace();
+    @FXML
+    private void tornaDashboard(ActionEvent event) {
+    try {
+        // Imposta isOnDashboard a true quando sei sulla dashboard
+        isOnDashboard = true;
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Front/Front.fxml"));
+        Parent front = loader.load();
+        FrontController frontController = loader.getController();
+        frontController.setUtente(this.loggedUtente);
+        Scene frontScene = new Scene(front);
+        
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(frontScene);
+        stage.show();
+    } catch (Exception e) {
+        System.out.println("Verificato un errore nel caricamento della Dashboard: --> " + e.getMessage());
+        e.printStackTrace();
+    }
+}
+
+
+    // -------------------------------------------------------------------------------------------------------------------------------------------------
+    // Metodo per ottenere la difficoltà corrente dell'utente 
+
+    private String getDiffCOrrenteCosaStampa() {
+        double[] score = loggedUtente.getScore();
+        if (score[0] >= 1.0) { 
+            if (score[1] >= 1.0) { 
+                return "Difficile"; // Ritorna "difficile" se entrambi i livelli precedenti sono completati
+            }
+            return "Medio"; // Ritorna "medio" se solo il livello "semplice" è completato
         }
+        return "Semplice"; // Ritorna "semplice" se il livello "semplice" non è ancora completato
     }
 
+    // -------------------------------------------------------------------------------------------------------------------------------------------------
+    // Metodo per aggiornare la difficoltà 
+
+    private void aggiornaPunteggio(String diff) {
+        double[] score = loggedUtente.getScore();
+        int index = -1;
+        switch (diff) {
+            case "Semplice":
+                index = 0;
+                break;
+            case "Medio":
+                index = 1;
+                break;
+            case "Difficile":
+                index = 2;
+                break;
+        }
+    
+        if (index != -1) {
+            // Invece di limitare il punteggio a 0.75, incrementa sempre di 0.25
+            if(score[index] < 1.0){
+                score[index] += 0.25;
+            }
+        }
+    }
+    
 
 }
+

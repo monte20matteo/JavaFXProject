@@ -1,4 +1,4 @@
-Esercizio 1, Calcolo del Massimo!
+Esercizio 1
 public class Esercizio1 {
 public static void main(String[] args) {
 int a = 8;
@@ -9,14 +9,14 @@ System.out.println(max);
 }}
 
 12
-Esercizio 2, Conta bene!
+Esercizio 2
 public class Esercizio2 {
 public static void main(String[] args) {
 String parola = "Programmazione";
 System.out.println(parola.length());}}
 
 14
-Esercizio 3, Il ciclo While!
+Esercizio 3
 public class Esercizio3 {
 public static void main(String[] args) {
 int x = 2;
@@ -26,7 +26,7 @@ x += 2;}
 System.out.println(x);}}
 
 4
-Esercizio 4, Benvenuto ASCII!
+Esercizio 4
 public class Esercizio4 {
 public static void main(String[] args) {
 char ch = 'A';

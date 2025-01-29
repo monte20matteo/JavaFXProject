@@ -1,4 +1,4 @@
-Esercizio 1, Ordina L'Array!
+Esercizio 1
 public class Esercizio1 {
 public static void main(String[] args) {
 int[] arr = {64, 34, 25, 12, 22, 11, 90};
@@ -11,7 +11,7 @@ arr[j + 1] = temp;}}}
 System.out.println(Arrays.toString(arr));}}
 
 [11,12,22,25,34,64,90]
-Esercizio 2, Gestione conto bancario!
+Esercizio 2
 public class ContoBancario {
 private double saldo;
 public ContoBancario(double saldoIniziale) {
@@ -31,8 +31,8 @@ conto.preleva(200);
 System.out.println("Saldo finale: " + conto.getSaldo());}}
 
 1300
-Esercizio 3, Gestione delle eccezioni!
-public class Esercizio4 {
+Esercizio 3
+public class Esercizio3 {
 public static void main(String[] args) {
 try {
 int num1 = 10;
@@ -44,8 +44,8 @@ finally {
 System.out.println("Operazione completata!");}}}
 
 Errore: divisione per zero!
-Esercizio 4, Numero più grande!
-public class Esercizio2 {
+Esercizio 4
+public class Esercizio4 {
 public static void main(String[] args) {
 int num = 54673;
 System.out.println(largestNumber(num));}

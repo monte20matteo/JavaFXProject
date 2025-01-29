@@ -16,13 +16,14 @@ import Login.Utente;
 
 public class RegoleTrovaErroreController {
 
-     private Utente utente;
+    private Utente utente;
 
     public void setUtente(Utente utente) {
         this.utente = utente;
     }
-    
-    @FXML private void avantiClicked(ActionEvent event) {
+
+    @FXML
+    private void avantiClicked(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("TrovaErrore.fxml"));
             Parent root = loader.load();
@@ -41,8 +42,9 @@ public class RegoleTrovaErroreController {
             alert.showAndWait();
         }
     }
- 
-     @FXML private void indietroClicked(ActionEvent event) {
+
+    @FXML
+    private void indietroClicked(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Esercizi/Front/front.fxml"));
             Parent root = loader.load();
